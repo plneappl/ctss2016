@@ -1,0 +1,132 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{lastpage}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{extarrows}
+\usepackage{listings} \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt} \lstset{language=R}
+\usepackage{stmaryrd}
+%Felix: There is a conflict between mathtools and xfraf whem I'm compiling the
+% document.
+% https://lists.debian.org/debian-tex-maint/2011/03/msg00101.html
+% \usepackage{xfrac}
+\usepackage{tikz}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{centernot}
+\usepackage{amssymb}
+\usepackage{calc}
+\usepackage[nomessages]{fp}
+\usepackage{polynom}
+\usepackage{ctable}
+\usepackage[sharp]{easylist}
+\usepackage{siunitx}
+\usepackage{pdfpages}
+\usepackage{enumerate}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
+\usepackage{hyperref}
+\usepackage{placeins}
+\usepackage[makeroom]{cancel}
+%\usepackage{sagetex}
+
+\geometry{a4paper,left=3cm, right=3cm, top=3cm, bottom=3cm}
+\pagestyle{fancy}
+\fancyhead[C]{Codierungstheorie}
+\fancyhead[R]{\today}
+\fancyfoot[L]{Simon Wegendt}
+\fancyfoot[C]{Seite \thepage /\pageref{LastPage}}
+\fancyfoot[R]{David Binder}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\newcommand{\cmark}{\text{\ding{51}}}%
+\newcommand{\xmark}{\text{\ding{55}}}%
+\parindent0pt
+%\newcommand{\N}{\mbox{$I\!\!N$}}
+%\newcommand{\Z}{\mbox{$Z\!\!\!Z$}}
+%\newcommand{\Q}{\mbox{$I\:\!\!\!\!\!Q$}}
+%\newcommand{\R}{\mbox{$I\!\!R$}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\L}{\mathbb{L}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\tuple}[1]{\left( #1 \right)}
+\newcommand{\entspr}{\ensuremath \widehat{=}}
+\newcommand{\innervect}[1]{\begin{array}{c}#1\end{array}}
+\newcommand{\vect}[1]{\tuple{\innervect{#1}}}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\newcommand{\lgsto}[4]{
+  \xrightarrow[
+    \overset{
+      \text{\scriptsize #3}
+    }{
+      \text{#4}
+    }
+  ]{
+    \overset{
+      \text{\scriptsize #1}
+    }{
+      \text{#2}
+    }
+  }
+}
+\renewcommand{\mod}{\text{ mod }}
+\newcommand{\ggT}{\text{ggT}}
+\newcommand{\id}{\text{id}}
+\newcommand{\IV}{\overset{\text{IV}}{=}}
+\newcommand{\ZZ}{\ensuremath{\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}:\phantom{}}}
+\newcommand{\grad}{\text{grad}}
+\newcommand{\phantomn}{\phantom{}}
+\newcommand{\overtext}[2]{\overset{\text{\scriptsize #1}}{#2}}
+\newcommand{\Abb}{\text{Abb}}
+\newcommand{\seilpmi}{\hspace{3pt}\Longleftarrow\hspace{3pt}}
+\newcommand{\Kern}{\text{Kern}}
+\newcommand{\Bild}{\text{Bild}}
+\newcommand{\Spann}[1]{\left\langle#1\right\rangle}
+\newcommand{\Rang}{\text{Rang}}
+\renewcommand{\phi}{\varphi}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\TM}[1]{\left\langle#1\right\rangle}
+\newcommand{\ot}{\reflectbox{$\to$}}
+\newcommand{\underscore}{\underline{\hspace{5pt}}}
+\newcommand{\VR}{\text{VR}}
+
+\DeclareMathOperator*{\argmax}{argmax\,}
+\DeclareMathOperator*{\argmin}{argmin\,}
+
+\def\splitstring#1#2{%
+    \noexpandarg
+    \IfSubStr{#1}{#2}{
+    \StrBefore{#1}{#2}
+    }{#1}
+}
+\newcommand{\firstline}[1]{\splitstring{#1}{\\}}
+
+\newcommand{\autobox}[1]{\parbox{\widthof{\firstline{#1}}}{#1}}
+\newenvironment{myList}{
+  \begin{easylist}[enumerate]\ListProperties(Numbers1=l, Mark1={)}, Style1*=\bfseries\large, Numbers2=a, Numbers3=R, Numbers4=r, Hide3=2, Mark2=., Style2*={}, Progressive=1em)
+}{\end{easylist}}
+
+\newcommand*{\independent}{\ensuremath{\bot\hspace{-0.5em}\bot}}
+\newcommand*{\given}{\,|\,}
+
