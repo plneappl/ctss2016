@@ -1,8 +1,44 @@
 \input{../base.tex}
-\fancyhead[L]{Exercise 1}
+\fancyhead[L]{Übungsblatt 1}
 \begin{document}
+\section*{Aufgabe 2}
+Gegenbeispiel:\\
+Sei $\mathcal C = \set{000}\subset\set{0, 1}^3$\\
+$\implies d(\mathcal C)=0$ (per Definition), $n=3$.\\
+Setze $t=1\in\N$: $t\leq n$ und $2t+1=3>d(\mathcal C)$.\\
+Für alle $y\in \set{0, 1}^3$ wird $y$ auf $x=000$ decodiert, also auch für alle $y$ mit $d(x, y)=t$. Da es keine $x'\in\mathcal C$ gibt mit $x\not= x'$, ist die Aussage wiederlegt.
 
+\section*{Aufgabe 3}
+\begin{myList}
+# $\C \subseteq\set{0,1}^7, |C|=3$\\
+\ZZ: $d(C)< 5$. Beweis durch Wiederspruch:\\\\
+Sei $\C=\set{a=\tuple{a_1, a_2,\ldots, a_7}, b=\tuple{b_1, \ldots}, c=\ldots}$. Angenommen $d(\C)\geq 5$. Dann gilt:\\
+$d(a, b)\geq 5, d(b, c)\geq 5, d(c, a)\geq 5$.\\
+OBdA seien $a_1\not=b_1, a_2\not=b_2, \ldots, a_5\not= b_5$. Damit $d(b, c)\geq 5$ müssen mindestens 3 der von $a$ unterschiedlichen Buchstaben in $b$ von $c$ unterschiedlich sein, d.h.
+$$\exists i_1, i_2, i_3 \leq 5: i_1\not=i_2\not=i_3\not=i_1, b_{i_1}\not= c_{i_1},   b_{i_2}\not= c_{i_2},   b_{i_3}\not= c_{i_3} $$
+Da $\C\subseteq\set{0, 1}^7$ ist, müssen gerade diese unterschiedlichen Buchstaben gleich sein wie die jeweiligen aus $a$. Dann kann sich $c$ aber nur noch an höchstens $7-3=4$ Stellen von $a$ unterscheiden. \\
+Also ist $d(\C)< 5$.
 
+# Zu konstruieren: ein Blockcode $\C=\set{c_1, c_2, c_3, c_4}\subseteq\set{0,1}^8$ mit $|\C|=4, d(\C)=5$.   \\
+Fange an mit $$c_1=0000\;0000$$.\\
+$c_2$ muss sich an 5 Stellen unterscheiden: $$c_2= ***1\;1111$$\\
+$c_3$ muss sich an 5 Stellen von $c_1$ unterscheiden: $$c_3=11*1\;*1*1$$
+$c_2$ muss sich an 5 Stellen von $c_3$ unterscheiden: $$c_2=00*1\;1111$$
+$$c_3=11*1\;0101$$
+$c_4$ muss sich an 5 Stellen von $c_3$ unterscheiden:
+$$c_4=***0\;1010$$
+$c_4$ muss sich an 5 Stellen von $c_1$ unterscheiden:
+$$c_4=1110\;1010$$
+$c_2$ und $c_3$ müssen sich an Stelle 3 noch unterscheiden, damit sie sich an 5 Stellen unterscheiden:
+$$c_2=0001\;1111, c_3=1111\;0101$$
+Finaler code:
+$$\begin{pmatrix}
+0000&0000\\
+0001&1111\\
+1111&0101\\
+1110&1010
+\end{pmatrix}$$
+\end{myList}
 \end{document}
 
 
