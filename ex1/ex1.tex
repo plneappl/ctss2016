@@ -21,23 +21,25 @@ Also ist $d(\C)< 5$.
 
 # Zu konstruieren: ein Blockcode $\C=\set{c_1, c_2, c_3, c_4}\subseteq\set{0,1}^8$ mit $|\C|=4, d(\C)=5$.   \\
 Fange an mit $$c_1=0000\;0000$$.\\
-$c_2$ muss sich an 5 Stellen unterscheiden: $$c_2= ***1\;1111$$\\
-$c_3$ muss sich an 5 Stellen von $c_1$ unterscheiden: $$c_3=11*1\;*1*1$$
-$c_2$ muss sich an 5 Stellen von $c_3$ unterscheiden: $$c_2=00*1\;1111$$
-$$c_3=11*1\;0101$$
+$c_2$ muss sich an 5 Stellen unterscheiden: $$c_2= \mbox{*}\mbox{*}\mbox{*}1\;1111$$\\
+$c_3$ muss sich an 5 Stellen von $c_1$ unterscheiden: $$c_3=11\mbox{*}1\;\mbox{*}1\mbox{*}1$$
+$c_2$ muss sich an 5 Stellen von $c_3$ unterscheiden: $$c_2=00\mbox{*}1\;1111$$
+$$c_3=11\mbox{*}1\;0101$$
 $c_4$ muss sich an 5 Stellen von $c_3$ unterscheiden:
-$$c_4=***0\;1010$$
+$$c_4=\mbox{*}\mbox{*}\mbox{*}0\;1010$$
 $c_4$ muss sich an 5 Stellen von $c_1$ unterscheiden:
 $$c_4=1110\;1010$$
 $c_2$ und $c_3$ müssen sich an Stelle 3 noch unterscheiden, damit sie sich an 5 Stellen unterscheiden:
 $$c_2=0001\;1111, c_3=1111\;0101$$
 Finaler code:
-$$\begin{pmatrix}
+$$\C=\begin{pmatrix}
 0000&0000\\
 0001&1111\\
 1111&0101\\
 1110&1010
 \end{pmatrix}$$
+
+# Es gibt keinen Code wie in b) mit $|\C|=5$, denn $|\C|\overset ! \leq A_2(8, 5) = A_2(9, 6) = 4$ \\(\url{http://www.win.tue.nl/~aeb/codes/binary-1.html}).
 \end{myList}
 \end{document}
 
