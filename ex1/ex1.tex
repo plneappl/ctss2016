@@ -2,8 +2,8 @@
 \fancyhead[L]{Übungsblatt 1}
 \begin{document}
 \section*{Aufgabe 1}
-Wir modellieren die Fehler als Addition von Zahlen aus der Menge $\lbrace 0 \ldots 96\rbrace$ sodass das Ergebnis genau der Veränderung der Ziffer modulo 97 entspricht.
-Es wird also das gesendete Zeichen $x$ zu dem empfangenen Zeichen $x' = (x + c) \mod 10$ mit $c\in[0, 9]$.
+Wir modellieren die Fehler als Addition von Zahlen aus der Menge $\lbrace 0 \ldots 9\rbrace$ sodass das Ergebnis genau der Veränderung der Ziffer modulo 97 entspricht.
+Es wird also das gesendete Zeichen $x$ zu dem empfangenen Zeichen $x' = (x + c) \mod 10$ mit $c\in\lbrace 0 \ldots 9\rbrace$.
 Beispiele:
 \begin{enumerate}
 	\item Wird $x = 5$ abgeändert zu $x' = 6$ so wird $x'$  modelliert als $(x + c) \mod 10$, wobei $c$ hier 1 ist.
@@ -37,7 +37,7 @@ Seien die beiden Positionen, an denen verändert wird, $a$ und $a+2$:
 	  &\Rightarrow (c_a + c_{a+2} \cdot 3) \equiv 0 (\mod 97)
 \end{align*}
 
-Wenn also $(c_a + c_{a+2} \cdot 3) \not\equiv 0 (\mod 97)$, dann wird der Fehler erkannt. Mit allen Einschränkungen gibt es keine $(c_a, c_{a+2})\not=(0, 0)$, so dass ein solcher Fehler nicht erkannt wird.
+Wenn also $(c_a + c_{a+2} \cdot 3) \not\equiv 0 (\mod 97)$, dann wird der Fehler erkannt. Mit allen Einschränkungen gibt es keine $(c_a, c_{a+2})\not=(0, 0)$, so dass ein solcher Fehler nicht erkannt wird (getestet per Brute-force).
 
 #
 Sei $w = (x_{23}, \ldots , x_0)$ und $w' = (x_0, x_{23}, \ldots, x_1)$.
