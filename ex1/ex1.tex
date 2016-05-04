@@ -3,18 +3,18 @@
 \begin{document}
 \section*{Aufgabe 1}
 Wir modellieren die Fehler als Addition von Zahlen aus der Menge $\lbrace 0 \ldots 96\rbrace$ sodass das Ergebnis genau der Veränderung der Ziffer modulo 97 entspricht.
-Es wird also das gesendete Zeichen $x$ zu dem empfangenen Zeichen $x' = (x + c) \mod 97$.
+Es wird also das gesendete Zeichen $x$ zu dem empfangenen Zeichen $x' = (x + c) \mod 10$ mit $c\in[0, 9]$.
 Beispiele:
 \begin{enumerate}
-	\item Wird $x = 5$ abgeändert zu $x' = 6$ so wird $x'$  modelliert als $(x + c) \mod 97$, wobei $c$ hier 1 ist.
-	\item Wird $x = 5$ abgeändert zu $x' = 4$ so wird $x'$  modelliert als $(x + c) \mod 97$, wobei $c$ hier 96 ist.
+	\item Wird $x = 5$ abgeändert zu $x' = 6$ so wird $x'$  modelliert als $(x + c) \mod 10$, wobei $c$ hier 1 ist.
+	\item Wird $x = 5$ abgeändert zu $x' = 4$ so wird $x'$  modelliert als $(x + c) \mod 10$, wobei $c$ hier 9 ist.
 \end{enumerate}
 
 Es sei im folgenden $w$ das unmodifizierte Wort, $w'$ das modifizierte Wort und $PS(w)$ die Prüfsumme des Wortes $w$.
 
 \begin{myList}
 #
-Seien die beiden Positionen an denen verändert wird $a$ und $a+1$:
+Seien die beiden Positionen, an denen verändert wird, $a$ und $a+1$; d.h. $c_i=0\,\forall i\not= a, i\not=a+1$:
 \begin{align*}
 	PS(w) &= PS(w') = 1 \\
 	 &\Leftrightarrow \sum_{i = 0}^{23} 10^i \cdot (x_i + c_i) \equiv 1 (\mod 97) \\
@@ -23,10 +23,10 @@ Seien die beiden Positionen an denen verändert wird $a$ und $a+1$:
 	  &\Leftrightarrow 10^a (c_a + c_{a+1} \cdot 10) \equiv 0 (\mod 97) \\
 	  &\Rightarrow (c_a + c_{a+1} \cdot 10) \equiv 0 (\mod 97)
 \end{align*}
-Wenn also  $(c_a + c_{a+1} \cdot 10) \not\equiv 0 (\mod 97)$, dann wird der Fehler erkannt.
+Wenn also  $(c_a + c_{a+1} \cdot 10) \not\equiv 0 (\mod 97)$, dann wird der Fehler erkannt. Dies ist genau dann der Fall, wenn $(c_a + c_{a+1} \cdot 10) \not= 97$, also $c_a\not=7$ und $c_{a+1}\not=9$.
 
 #
-Seien die beiden Positionen an denen verändert wird $a$ und $a+2$:
+Seien die beiden Positionen, an denen verändert wird, $a$ und $a+2$:
 \begin{align*}
 	PS(w) &= PS(w') = 1 \\
 	&\Leftrightarrow \sum_{i = 0}^{23} 10^i \cdot (x_i + c_i) \equiv 1 (\mod 97) \\
@@ -37,7 +37,7 @@ Seien die beiden Positionen an denen verändert wird $a$ und $a+2$:
 	  &\Rightarrow (c_a + c_{a+2} \cdot 3) \equiv 0 (\mod 97)
 \end{align*}
 
-Wenn also $(c_a + c_{a+2} \cdot 3) \not\equiv 0 (\mod 97)$, dann wird der Fehler erkannt.
+Wenn also $(c_a + c_{a+2} \cdot 3) \not\equiv 0 (\mod 97)$, dann wird der Fehler erkannt. Mit allen Einschränkungen gibt es keine $(c_a, c_{a+2})\not=(0, 0)$, so dass ein solcher Fehler nicht erkannt wird.
 
 #
 Sei $w = (x_{23}, \ldots , x_0)$ und $w' = (x_0, x_{23}, \ldots, x_1)$.
@@ -50,7 +50,7 @@ Sei $w \in \mathcal{C}$.
 	&= \left(\sum_{i=1}^{23} x_i \cdot 10^{i-1}\right) + 10^{23}x_0 - (10^{23} -1) x_0 + 9 \cdot \left(\sum_{i=1}^{23} x_i \cdot 10^{i-1}\right) \mod 97 \\
 	&= \left(\sum_{i=1}^{23} x_i \cdot 10^{i-1}\right) + 10^{23}x_0 - 55 x_0 + 9 \cdot \left(\sum_{i=1}^{23} x_i \cdot 10^{i-1}\right) \mod 97
 \end{align*}
-Also ist $w'$ in $c$ genau dann wenn $- 55 x_0 + 9 \cdot \left(\sum_{i=1}^{23} x_i \cdot 10^{i-1}\right) \equiv 0 (\mod 97)$
+Also ist $w'$ in $\C$ genau dann wenn $- 55 x_0 + 9 \cdot \left(\sum_{i=1}^{23} x_i \cdot 10^{i-1}\right) \equiv 0 (\mod 97)$
 \end{myList}
 \section*{Aufgabe 2}
 Gegenbeispiel:\\
