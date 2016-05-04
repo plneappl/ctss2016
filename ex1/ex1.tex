@@ -120,6 +120,71 @@ Also gilt, unabhängig von der Parität von $n$:
 $$d(\C)=2-n\pmod 2$$
 \end{myList}
 
+\section*{Aufgabe 5}
+$\mathcal{C} = \lbrace (0,0,0,0,0) , (0,1,1,0,1) , (1,0,1,1,0) , (1,1,0,1,1) \rbrace$
+
+Für $\mathcal{C}$ gelten folgende allgemeine Behauptungen.
+\begin{itemize}
+	\item Für jedes Codewort $w$ aus $\mathcal{C}$ existieren 2 Codewörter mit Hamming-Abstand 3 und 1 Codewort mit Hamming-Abstand 4 zu $w$.
+	Die beiden Codewörter mit Abstand 3 zu $w$ haben untereinander einen Abstand von $4$.
+	\item Für jedes Codewort $w$ und jede Position $i$ gilt: Es existieren 2 andere Codewörter die an Position $i$ nicht mit $w$ übereinstimmen und 1 Codewort das an Position $i$ mit $w$ übereinstimmt.
+	\item Im folgenden steht $w$ für das gesendete Codewort und $w'$ für das empfangene, modifizierte Wort.
+\end{itemize}
+\begin{myList}
+#
+Es gibt genau 10 Möglichkeiten dass zwei Fehler auftreten da $10 = \binom{5}{2}$, und $\binom{5}{2}$ die Anzahl der Möglichkeiten angibt 2 Positionen aus 5 möglichen auszuwählen.\medskip
+
+Möglichkeiten dass falsch dekodiert wird:\\
+Die Bedingung kann ausgeschrieben werden als: $\exists v \in \mathcal{C}: d(v,w') < 2$.
+Dafür kommen prinzipiell nur die beiden Codewörter mit Hammingabstand 3 zu $w$ in Betracht.
+Für jede der beiden in Frage kommenden Codewörter gibt es $\binom{3}{2} = 3$ Möglichkeiten.
+Diese jeweils 3 Möglichkeiten sind disjunkt da die beiden Codewörter einen Abstand von 4 zueinander haben und daher in maximal einer Position übereinstimmen können.
+Also existieren 6 Möglichkeiten dass falsch dekodiert wird.
+\medskip
+
+Möglichkeiten dass uneindeutig dekodiert wird:\\
+Die Bedingung kann ausgeschrieben werden als: $\exists v \in \mathcal{C}: d(v,w') = 2 \wedge \neg \exists v' \in \mathcal{C}: d(v',w') < 2$
+Für den ersten Teil der Bedingung kommt nur das Codewort mit Hamming-Abstand 4 zu $w$ in Betracht.
+Dafür existieren $\binom{4}{2} = 6$ Möglichkeiten.
+Von diesen 6 Möglichkeiten entfallen 2 bei denen eindeutig falsch kodiert wird (zweiter Teil der Bedingung).
+Die Anzahl ist hier 2 da die beiden Codewörter mit Hamming-Abstand 3 zu $w$ an keiner Stelle übereinstimmen ausser an der Stelle an der das Codewort mit Hamming-Abstand 4 zu $w$ sich von $w$ unterscheidet.
+
+#
+3 Fehler:\\
+Es gibt $\binom{5}{3} = 10$ Möglichkeiten wie Fehler auftreten können.
+Es gibt immer ein Codewort $v$ mit $d(v,w') < 3$.
+Beweis:\\
+Jede Modifikation die für eines der drei anderen Codewörter aus $\mathcal{C}$ den Abstand zu $w'$ erhöht verringert den Abstand von $w'$ zu den anderen beiden Codewörtern.
+Sind zB 2 aus 3 Modifikationen negativ für $v'$, so ist dieselbe Modifikation positiv für die beiden anderen Codewörter $v''$ und $v'''$.
+\medskip
+
+4 Fehler:\\
+Es gibt $\binom{5}{4} = 5$ Möglichkeiten wie Fehler auftreten können.
+Sei $w$ das gesendete Codewort, $w'$ das modifizierte Wort und $v$ das Codewort welches zu $w$ den Hamming-Abstand 4 hat.
+Dann gilt dass $d(w',v) = 0$ oder $d(w',v) = 2$ (da die nicht modifizierte Stelle entweder mit $v$ übereinstimmen kann oder nicht).
+Damit existiert immer ein Codewort welches einen geringeren Hamming-Abstand von $w'$ als $w$ hat.
+\medskip
+
+5 Fehler:\\
+Es gibt $\binom{5}{5} = 1$ Möglichkeit wie Fehler auftreten können.
+Das dadurch entstehende Wort hat den Maximalabstand 5 vom Ursprungswort, und da keine 3 Wörter jeweils den Maximalabstand voneinander haben können muss immer ein Codewort mit kleinerem Hamming-Abstand existieren.
+Es wird also immer falsch dekodiert.
+#
+Sei $p_i$ die Wahrscheinlichkeit dass $i$ Fehler auftreten. Es gilt:
+\begin{equation*}
+	p_i = p^i \cdot (1-p)^{5-i}
+\end{equation*}
+Sei $f_i$ die Wahrscheinlichkeit dass bei $i$ aufgetretenen Fehlern falsch dekodiert wird. Aus den vorherigen Aufgabenteilen und für die Trivialfälle $i = 0$ und $i = 1$ gilt:
+\begin{equation*}
+	f_0 = f_1 = 0 \qquad f_2 = 0.4\cdot 0.5 + 0.6 \qquad f_3 = 1 \qquad f_4 = 1 \qquad f_5 = 1
+\end{equation*}
+Dann ist die Decodierfehlerwahrscheinlichkeit gegeben durch:
+\begin{align*}
+	&p_0 \cdot f_0 + p_1 \cdot f_1 + p_2 \cdot f_2 + p_3 \cdot f_3 + p_4 \cdot f_4 + p_5 \cdot f_5 \\
+	&= p_2 \cdot 0.8 + p_3  + p_4  + p_5 \\
+	&= (p^2 \cdot (1-p)^3) \cdot 0.8 + (p^3 \cdot (1-p))^2) + (p^4 \cdot (1-p)^1) + p^5
+\end{align*}
+\end{myList}
 \end{document}
 
 
