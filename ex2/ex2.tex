@@ -1,9 +1,115 @@
 \input{../base.tex}
 \fancyhead[L]{Übungsblatt 2}
 \begin{document}
-\section*{Aufgabe 1}
-\section*{Aufgabe 2}
-\section*{Aufgabe 3}
+\section*{Aufgabe 6}
+Die Quelle $Q$ gibt die Zeichen 0 und 1 mit den Wahrscheinlichkeiten $p_Q(0) = \frac{1}{4}$ und $p_Q(1) = \frac{3}{4}$ aus.
+Die Zeichen werden über einen binär symmetrischen Kanal mit $p = \frac{1}{16}$ übertragen.
+\medskip
+
+Berechnung der Entropie der Quelle:
+
+TODO
+
+Berechnung der Outputentropie:
+
+TODO
+
+Berechnung der Streuentropie:
+
+TODO
+
+Berechnung der mittleren Transinformation:
+
+TODO
+
+\section*{Aufgabe 7}
+\begin{myList}
+#
+$A = \lbrace 0,1 \rbrace$, $B = \lbrace 0,1,\ast \rbrace$
+\begin{align*}
+	p(0|0) &= \frac{1}{2} & p(1|0) &= \frac{1}{4} & p(\ast|0) &= \frac{1}{4} \\
+	p(1|1) &= \frac{1}{2} & p(0|1) &= \frac{1}{4} & p(\ast|1) &= \frac{1}{4} 
+\end{align*}
+
+Berechne $I(Q,E)$ in Abhängigkeit von $p_Q$:\\
+TODO
+
+Maximiere die Funktion:\\
+TODO
+#
+$A = B = \lbrace 0,1,2 \rbrace$
+\begin{align*}
+	p(0|0) &= p & p(1|0) &= (1-p) & p(2|0) &= 0 \\
+	p(1|1) &= p & p(0|1) &= (1-p) & p(2|1) &= 0 \\
+	p(2|2) &= 1 & p(0|2) &= 0 & p(1|2) &= 0
+\end{align*}
+
+Berechne $I(Q,E)$ in Abhängigkeit von $p_Q$:\\
+TODO
+
+Maximiere die Funktion:\\
+TODO
+\end{myList}
+
+\section*{Aufgabe 8}
+\begin{myList}
+#
+Zeige $H(E|Q) = H(Q,E) - H(Q)$ und $H(E|Q) \leq H(E)$.
+
+TODO
+
+#
+Zeige $H(Q|E) = H(Q,E) - H(E)$
+
+TODO
+
+#
+Zeige $I(Q,E) = H(Q) - H(Q|E) \leq H(Q)$
+
+TODO
+
+\end{myList}
+
+\section*{Aufgabe 9}
+
+Sei die Codierungsfunktion $c: \mathbb{Z}^3_2 \rightarrow \mathbb{Z}^5_2 , (x,y,z) \mapsto (x,y,z,x+z,y+z)$.\\
+Sei $\mathcal{C} = \lbrace v \in \mathbb{Z}^5_2 | \exists w \in \mathbb{Z}^3_2: v = c(w) \rbrace$.
+\begin{myList}
+#
+Zeige dass $\mathcal{C}$ ein linearer Code ist.
+
+TODO
+
+#
+Geben Sie eine Erzeugermatrix von $\mathcal{C}$ an.
+
+TODO
+
+#
+Bestimmen Sie die Länge $n$, die Dimension $k$ und den Minimalabstand $d$ von $\mathcal{C}$.
+
+TODO
+
+#
+Wieviele Fehler kann $\mathcal{C}$ erkennen /  korrigieren?
+
+TODO
+\end{myList}
+
+\section*{Aufgabe 10}
+\begin{myList}
+#
+Schreiben Sie ein Programm, das zufällig einen 4-dimensionalen Untervektorraum des $\mathbb{Z}^10_2$ erzeugt und den Minimalabstand von $U$ berechnet.
+Welchen durchschnittlichen Minimalabstand erhalten Sie nach 100 Programmdurchläufen?
+
+TODO
+
+#
+Konstruieren Sie einen binären $[10,4]$-Code mit möglichst großen Minimalabstand.
+
+TODO
+\end{myList}
+
 \end{document}
 
 
