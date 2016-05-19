@@ -86,25 +86,51 @@ TODO
 \section*{Aufgabe 9}
 
 Sei die Codierungsfunktion $c: \mathbb{Z}^3_2 \rightarrow \mathbb{Z}^5_2 , (x,y,z) \mapsto (x,y,z,x+z,y+z)$.\\
-Sei $\mathcal{C} = \lbrace v \in \mathbb{Z}^5_2 | \exists w \in \mathbb{Z}^3_2: v = c(w) \rbrace$.
+Sei $\C = \lbrace v \in \mathbb{Z}^5_2 | \exists w \in \mathbb{Z}^3_2: v = c(w) \rbrace$.
 \begin{myList}
+# Zeigen Sie, dass $\C$ ein linearer Code ist:\\
+$\C$ ist ein linearer Code gdw. $\forall a, b\in\C: x+y\in\C$.\\
+Seien $a = (x, y, z, w=x+z, v=y+z), b=(x', y', z', w'=x'+z', v'=y'+z')\in\C$ beliebig. Dann gilt:
+$$a+b = (x'' = x+x', y'' = y+y', z'' = z+z', w'' = w+w', v'' = v+v')$$
+$a+b$ ist genau dann in $\C$, wenn gilt:
+\begin{align*}
+w'' &= x''+z''\\
+v'' &= y''+z''
+\end{align*}
+Wir überprüfen einzeln:
+\begin{align*}
+w'' &= w+w' = x+z+x'+z'=(x+x')+(z+z') = x'' + z''\\
+v'' &= v+v' = y+z+y'+z'=(y+y')+(z+z') = y'' + z''\\
+\end{align*}
+Also ist $\C$ ein linearer Code.
+# Geben Sie eine Erzeugermatrix von $\C$ an:\\
+$$\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+1 & 0 & 1\\
+0 & 1 & 1
+\end{pmatrix}$$
+
 #
-Zeige dass $\mathcal{C}$ ein linearer Code ist.
-
-TODO
-
-#
-Geben Sie eine Erzeugermatrix von $\mathcal{C}$ an.
-
-TODO
-
-#
-Bestimmen Sie die Länge $n$, die Dimension $k$ und den Minimalabstand $d$ von $\mathcal{C}$.
-
-TODO
-
-#
-Wieviele Fehler kann $\mathcal{C}$ erkennen /  korrigieren?
+Bestimmen Sie die Länge $n$, die Dimension $k$ und den Minimalabstand $d$ von $\C$:\\
+Länge $n = 5$\\
+Dimension $k = 3$\\
+Minimalabstand $d$:\\
+Alle Codewörter:
+$$\begin{array}{cc}
+\multicolumn{2}{c}{\text{Codewörter}}\\
+001 & 11 \\
+010 & 01 \\
+011 & 10 \\
+100 & 10 \\
+101 & 01 \\
+110 & 11 \\
+111 & 00 \\
+\end{array}$$
+$d=\min\set{3, 2, 3, 2, 3, 4, 3, 4, 3, 2, 3, 3, 3, 3, 2, 3, 2, 3, 3, 2, 3} = 2$ 
+# Wieviele Fehler kann $\C$ erkennen / korrigieren?\\
+$\C$ kann 1 Fehler erkennen und keinen sicher korrigieren.
 
 TODO
 \end{myList}
