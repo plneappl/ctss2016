@@ -5,22 +5,35 @@
 Die Quelle $Q$ gibt die Zeichen 0 und 1 mit den Wahrscheinlichkeiten $p_Q(0) = \frac{1}{4}$ und $p_Q(1) = \frac{3}{4}$ aus.
 Die Zeichen werden über einen binär symmetrischen Kanal mit $p = \frac{1}{16}$ übertragen.
 \medskip
+\begin{myList}
 
-Berechnung der Entropie der Quelle:
+# Berechnung der Entropie der Quelle:
+\begin{align*} 
+H(Q) 
+  &= \sum_{a\in A} p_Q(a)\cdot\log_2\tuple{\frac 1 {p_Q(a)}} \\
+  &= \frac 1 4\log(4) + \frac 3 4\log\tuple{\frac 4 3} \\
+  &\approx 0.5+0.311=0.811
+\end{align*}
 
-TODO
+# Berechnung der Outputentropie:
+\begin{align*}
+p_E(0) &= \frac 1 4\frac{15}{16} + \frac 3 4\frac 1 {16} = \frac 9{32}\\
+p_E(1) &= 1 - p_E(0) = \frac{23}{32}\\
+H(E) &= \frac{9}{32}\log\tuple{\frac{32}{9}} + \frac{23}{32}\log\tuple{\frac{32}{23}}\\
+&\approx 0.857
+\end{align*}
 
-Berechnung der Outputentropie:
+# Berechnung der Streuentropie:
+\begin{align*}
+H(E|Q)&=H_p&&\text{(Skript 2.16)}\\
+&= \frac 1 {16}\log(16) + \frac{15}{16}\log\tuple{\frac{16}{15}}\\
+&\approx 0.337
+\end{align*}
 
-TODO
+# Berechnung der mittleren Transinformation:
+$$I(Q, E) = H(E) - H(E|Q) \approx 0.857 - 0.337 = 0.520 
 
-Berechnung der Streuentropie:
-
-TODO
-
-Berechnung der mittleren Transinformation:
-
-TODO
+\end{myList}
 
 \section*{Aufgabe 7}
 \begin{myList}
