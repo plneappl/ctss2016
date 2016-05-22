@@ -45,7 +45,46 @@ $A = \lbrace 0,1 \rbrace$, $B = \lbrace 0,1,\ast \rbrace$
 \end{align*}
 
 Berechne $I(Q,E)$ in Abhängigkeit von $p_Q$:\\
-TODO
+Sei $p_Q(0) = p, p_Q(1) = 1-p$.
+
+Für die Outputwahrscheinlichkeiten gilt:
+\begin{align*}
+	p_E(0) &= p_Q(0) \cdot p(0|0) + p_Q(1) \cdot p(0|1)\\
+	&= p \cdot \frac{1}{2} + (1-p) \cdot \frac{1}{4}  = \frac{p}{4} + \frac{1}{4} = \frac{1 + p}{4}\\
+	p_E(1) &= p_Q(0) \cdot p(1|0) + p_Q(1) \cdot p(1|1)\\
+	&= p \cdot \frac{1}{4} + (1-p) \cdot \frac{1}{2} = -\frac{p}{4} + \frac{1}{2} = \frac{2 - p}{4}\\
+	p_E(\ast) &= p_Q(0) \cdot p(\ast|0) + p_Q(1) \cdot p(\ast|1)\\
+	&= p \cdot \frac{1}{4} + (1-p) \cdot \frac{1}{4} = \frac{1}{4}
+\end{align*}
+
+Für die Outputentropie gilt:
+\begin{align*}
+	H(E) &= \sum\limits_{b \in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)}\right) \\
+	&= \frac{1+p}{4}\cdot \log \left( \frac{4}{1+p}\right) + \frac{2-p}{4} \cdot \log \left( \frac{4}{2-p} \right) + \frac{1}{4}\cdot \log 4 \\
+	&= \frac{6 + (p-2)\log(2-p) - (1+p)\log(1+p)}{4}
+\end{align*}
+
+Für die einzelnen $H(E|a)$ gilt:
+\begin{align*}
+	H(E|0) &= \sum\limits_{b\in B} p(b|0) \cdot \log \left(\frac{1}{p(b|0)} \right)\\
+	&= p(0|0) \cdot \log \left(\frac{1}{p(0|0)} \right) + p(1|0) \cdot \log \left(\frac{1}{p(1|0)} \right) + p(\ast|0) \cdot \log \left(\frac{1}{p(\ast|0)} \right)\\
+	&= \frac{1}{2} \cdot 1 + \frac{1}{4} \cdot 2 + \frac{1}{4} \cdot 2 = \frac{3}{2}\\
+	H(E|1) &= \sum\limits_{b\in B} p(b|1) \cdot \log \left(\frac{1}{p(b|1)} \right) = \frac{3}{2} \text{ (analog)}
+\end{align*}
+
+Für die Streuentropie gilt:
+\begin{align*}
+	H(E|Q) &= \sum\limits_{a \in A} p_Q(a) \cdot H(E|a) \\
+	&= p \cdot \frac{3}{2} + (1-p) \cdot \frac{3}{2} = \frac{3}{2}
+\end{align*}
+
+Für die mittlere Transinformation gilt:
+\begin{align*}
+	I(Q|E) &= H(E) - H(E|Q)\\
+	&= \frac{(p-2)\log(2-p) - (1+p)\log(1+p)}{4}
+\end{align*}
+
+
 
 Maximiere die Funktion:\\
 TODO
@@ -58,7 +97,38 @@ $A = B = \lbrace 0,1,2 \rbrace$
 \end{align*}
 
 Berechne $I(Q,E)$ in Abhängigkeit von $p_Q$:\\
-TODO
+Für die Outputwahrscheinlichkeiten gilt:
+\begin{align*}
+	p_E(0) &= p_Q(0) \cdot p(0|0) + p_Q(1) \cdot p(0|1) + p_Q(2) \cdot p(0|2) \\
+	&= p_Q(0) \cdot p + p_Q(1) \cdot (1-p) \\
+	p_E(1) &= p_Q(0) \cdot p(1|0) + p_Q(1) \cdot p(1|1) + p_Q(2) \cdot p(1|2)\\
+	&= p_Q(0) \cdot (1-p) + p_Q(1) \cdot p \\
+	p_E(2) &= p_Q(0) \cdot p(2|0) + p_Q(1) \cdot p(2|1) + p_Q(2) \cdot p(2|2)\\
+	&= p_Q(2)
+\end{align*}
+
+Sei im folgenden $p_Q(0) = a, p_Q(1) = b, p_Q(2) = c$, dann gilt für die Outputentropie:
+\begin{align*}
+	H(E) &= \sum\limits_{b \in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)} \right)\\
+	&= (ap + b(1-p))\log \left(\frac{1}{ap + b(1-p)}\right) + (bp + a(1-p))\log \left(\frac{1}{bp + a(1-p)}\right)\\
+	&+ c \log\left( \frac{1}{c} \right)
+\end{align*}
+
+Für die einzelnen $H(E|a)$ gilt:
+\begin{align*}
+	H(E|0) &= p(0|0) \cdot \log \left(\frac{1}{p(0|0)} \right) + p(1|0) \cdot \log \left(\frac{1}{p(1|0)} \right) + p(2|0) \cdot \log \left(\frac{1}{p(2|0)} \right)\\
+	&= p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}\\
+	H(E|1) &= p(0|1) \cdot \log \left(\frac{1}{p(0|1)} \right) + p(1|1) \cdot \log \left(\frac{1}{p(1|1)} \right) + p(2|1) \cdot \log \left(\frac{1}{p(2|1)} \right)\\
+	&= p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}\\
+	H(E|2) &= p(0|2) \cdot \log \left(\frac{1}{p(0|2)} \right) + p(1|2) \cdot \log \left(\frac{1}{p(1|2)} \right) + p(2|2) \cdot \log \left(\frac{1}{p(2|2)} \right) \\
+	&= 0
+\end{align*}
+
+Für die Streuentropie gilt:
+\begin{align*}
+	H(E|Q) &= a \cdot (p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}) + b \cdot (p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}) \\
+	&= (a+b) \cdot (p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p})
+\end{align*}
 
 Maximiere die Funktion:\\
 TODO
