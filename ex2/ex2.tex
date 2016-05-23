@@ -137,9 +137,29 @@ TODO
 \section*{Aufgabe 8}
 \begin{myList}
 #
-Zeige $H(E|Q) = H(Q,E) - H(Q)$ und $H(E|Q) \leq H(E)$.
+\begin{align*}
+	H(Q) &= \sum\limits_{a \in A} p_Q(a) \cdot \log \left( \frac{1}{p_Q(a)} \right) \\
+	H(E|Q) &= \sum\limits_{a \in A} \sum\limits_{b \in B} p_Q(a) \cdot p(b|a) \cdot \log \left( \frac{1}{p(b|a)}\right) 
+\end{align*}
 
-TODO
+Zeige $H(E|Q) = H(Q,E) - H(Q)$:
+\begin{align*}
+	H(Q,E) &= \sum\limits_{(a,b) \in A\times B} p(a,b) \cdot \log\left(\frac{1}{p(a,b)}\right) \\
+	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(b|a) \cdot p_Q(a) \cdot \log \left( \frac{1}{p(b|a) \cdot p_Q(a)} \right) \\
+	&= \sum\limits_{a \in A} \sum\limits_{b \in B} -p(b|a) \cdot p_Q(a) \cdot \log \left(p(b|a) \cdot p_Q(a) \right) \\
+	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(b|a) \cdot p_Q(a) \cdot \log \left(\frac{1}{p(b|a)} \right) + p(b|a) \cdot p_Q(a) \cdot \log \left(\frac{1}{p_Q(a)} \right) \\
+	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(b|a) \cdot p_Q(a) \cdot \log \left(\frac{1}{p(b|a)} \right) + \sum\limits_{a \in A} \sum\limits_{b \in B} p(b|a) \cdot p_Q(a) \cdot \log \left(\frac{1}{p_Q(a)} \right) \\
+	&= H(E|Q) + \sum\limits_{a \in A}  p_Q(a) \cdot \log \left(\frac{1}{p_Q(a)} \right) = H(E|Q) + H(Q)\\
+	&\Rightarrow H(E|Q) = H(Q,E) - H(Q)
+\end{align*}
+
+Zeige $H(E|Q) \leq H(E)$:
+
+\begin{align*}
+	 H(E|Q) &\leq H(E) \\
+	\Leftrightarrow H(Q,E) - H(Q) &\leq H(E) \\
+	\Leftrightarrow H(Q,E) &\leq H(Q) + H(E) \text{(gilt nach Vorlesung 2.11.b)}
+\end{align*}
 
 #
 Zeige $H(Q|E) = H(Q,E) - H(E)$
