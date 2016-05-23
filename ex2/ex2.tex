@@ -162,9 +162,19 @@ Zeige $H(E|Q) \leq H(E)$:
 \end{align*}
 
 #
-Zeige $H(Q|E) = H(Q,E) - H(E)$
+\begin{align*}
+	H(Q|E) &= \sum\limits_{(a.b) \in A \times B} p_E(b)\cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b}\right)
+\end{align*}
 
-TODO
+Zeige $H(Q|E) = H(Q,E) - H(E)$
+\begin{align*}
+	H(Q|E) &= \sum\limits_{(a.b) \in A \times B} p_E(b)\cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b}\right) \\
+	&=\sum\limits_{a \in A} \sum\limits_{b \in B}  p(a,b) \cdot \log \left( \frac{p_E(b)}{p(a,b)}\right) \\
+	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(a,b) \cdot \log (p_E(b)) - p(a,b) \cdot \log(p(a,b)) \\
+	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(a,b) \cdot \log\left(\frac{1}{p(a,b)}\right) - \sum\limits_{a \in A} \sum\limits_{b \in B}  p(a,b) \cdot \log \left(\frac{1}{p_E(b)}\right) \\
+	&= H(Q,E) - \sum\limits_{b \in B} \sum\limits_{a \in A}  p(a|b) \cdot p_E(b) \cdot \log \left(\frac{1}{p_E(b)}\right) \\
+	&= H(Q,E) - \sum\limits_{b \in B} p_E(b) \cdot \log \left(\frac{1}{p_E(b)}\right) = H(Q,E) - H(E)
+\end{align*}
 
 #
 Zeige $I(Q,E) = H(Q) - H(Q|E) \leq H(Q)$
