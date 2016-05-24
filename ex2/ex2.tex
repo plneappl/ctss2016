@@ -61,7 +61,7 @@ Für die Outputentropie gilt:
 \begin{align*}
 	H(E) &= \sum\limits_{b \in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)}\right) \\
 	&= \frac{1+p}{4}\cdot \log \left( \frac{4}{1+p}\right) + \frac{2-p}{4} \cdot \log \left( \frac{4}{2-p} \right) + \frac{1}{4}\cdot \log 4 \\
-	&= \frac{6 + (p-2)\log(2-p) - (1+p)\log(1+p)}{4}
+	&= \frac{8 - (2-p)\log(2-p) - (1+p)\log(1+p)}{4}
 \end{align*}
 
 Für die einzelnen $H(E|a)$ gilt:
@@ -81,13 +81,23 @@ Für die Streuentropie gilt:
 Für die mittlere Transinformation gilt:
 \begin{align*}
 	I(Q|E) &= H(E) - H(E|Q)\\
-	&= \frac{(p-2)\log(2-p) - (1+p)\log(1+p)}{4}
+	&= \frac{2 -(2-p)\log(2-p) - (1+p)\log(1+p)}{4}
 \end{align*}
 
-
-
 Maximiere die Funktion:\\
-TODO
+Es gilt:
+\begin{equation*}
+	\frac{dI(Q|E)}{dp} = \frac{\log(2-p)- \log(p+1)}{4}
+\end{equation*}
+Der Scheitelpunkt der Kurve wird durch Nullsetzen bestimmt:
+\begin{align*}
+	&\log(2-p) - \log(p+1) = 0 \\
+	&\Leftrightarrow \log(2-p) = \log(p+1) \\
+	&\Leftrightarrow 2-p = p+1 \\
+	&\Leftrightarrow p = 0.5
+\end{align*}
+Durch einsetzen in die Formel für $I(Q|E)$ erhält man $\approx 0.0612$.
+Also ist die Kapazität des Kanals $\approx 0.0612$.
 #
 $A = B = \lbrace 0,1,2 \rbrace$
 \begin{align*}
@@ -163,12 +173,12 @@ Zeige $H(E|Q) \leq H(E)$:
 
 #
 \begin{align*}
-	H(Q|E) &= \sum\limits_{(a.b) \in A \times B} p_E(b)\cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b}\right)
+	H(Q|E) &= \sum\limits_{(a.b) \in A \times B} p_E(b)\cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b)}\right)
 \end{align*}
 
 Zeige $H(Q|E) = H(Q,E) - H(E)$
 \begin{align*}
-	H(Q|E) &= \sum\limits_{(a.b) \in A \times B} p_E(b)\cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b}\right) \\
+	H(Q|E) &= \sum\limits_{(a.b) \in A \times B} p_E(b)\cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b)}\right) \\
 	&=\sum\limits_{a \in A} \sum\limits_{b \in B}  p(a,b) \cdot \log \left( \frac{p_E(b)}{p(a,b)}\right) \\
 	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(a,b) \cdot \log (p_E(b)) - p(a,b) \cdot \log(p(a,b)) \\
 	&= \sum\limits_{a \in A} \sum\limits_{b \in B} p(a,b) \cdot \log\left(\frac{1}{p(a,b)}\right) - \sum\limits_{a \in A} \sum\limits_{b \in B}  p(a,b) \cdot \log \left(\frac{1}{p_E(b)}\right) \\
@@ -179,8 +189,28 @@ Zeige $H(Q|E) = H(Q,E) - H(E)$
 #
 Zeige $I(Q,E) = H(Q) - H(Q|E) \leq H(Q)$
 
-TODO
+$H(Q) - H(Q|E) \leq H(Q)$ gilt trivialerweise da $H(Q|E) \geq 0$.\\
+$H(Q|E) \geq 0$ gilt da sowohl $p_E(b), p(a|b)$ als auch $\log\left( \frac{1}{p(a|b) }\right)$ größer oder gleich 0 sind.
 
+Zeige $I(Q,E) = H(Q) - H(Q|E)$
+\begin{align*}
+	I(Q,E) &=_{Def} H(E) - H(E|Q) \\
+	&= \sum\limits_{b\in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)}\right) -
+	\sum\limits_{a\in A}\sum\limits_{b \in B} p_Q(a) \cdot p(b|a) \cdot \log \left( \frac{1}{p(b|a)}\right) \\
+	&\underset{Bayes}{=}  H(E) -
+	\sum\limits_{a\in A}\sum\limits_{b \in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{p_Q(a)}{p(a|b) \cdot p_E(b)} \right)\\
+	&=  H(E) -
+	\sum\limits_{a\in A}\sum\limits_{b \in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b)} \right)
+	-
+	\sum\limits_{a\in A}\sum\limits_{b \in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{1}{p_E(b)} \right)
+	\\	 
+	&+
+	\sum\limits_{a\in A}\sum\limits_{b \in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{1}{p_Q(a)} \right)\\
+	&= \\
+	&= \sum\limits_{a\in A} p_Q(a) \cdot \log \left( \frac{1}{p_Q(a)}\right)
+	- \sum\limits_{a\in A}\sum\limits_{b\in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b)} \right) \\
+	&= H(Q) - H(Q|E)
+\end{align*}
 \end{myList}
 
 \section*{Aufgabe 9}
