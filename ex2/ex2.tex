@@ -87,7 +87,7 @@ Für die mittlere Transinformation gilt:
 Maximiere die Funktion:\\
 Es gilt:
 \begin{equation*}
-	\frac{dI(Q|E)}{dp} = \frac{\log(2-p)- \log(p+1)}{4}
+	\frac{dI(Q|E)}{dp} = \frac{\log(2-p)- \log(p+1)}{\log_e(16)}
 \end{equation*}
 Der Scheitelpunkt der Kurve wird durch Nullsetzen bestimmt:
 \begin{align*}
@@ -121,15 +121,17 @@ Sei im folgenden $p_Q(0) = a, p_Q(1) = b, p_Q(2) = c$, dann gilt für die Output
 \begin{align*}
 	H(E) &= \sum\limits_{b \in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)} \right)\\
 	&= (ap + b(1-p))\log \left(\frac{1}{ap + b(1-p)}\right) + (bp + a(1-p))\log \left(\frac{1}{bp + a(1-p)}\right)\\
-	&+ c \log\left( \frac{1}{c} \right)
+	&+ c \log\left( \frac{1}{c} \right) \\
+	&= -(ap + b(1-p)\log(ap + b(1-p) - (bp + a(1-p))\log(bp + a(1-p)) - c\log(c) \\
+	&= -(ap + b - bp)\log(ap + b - bp) -(bp + a - ap)\log(bp + a - ap) - c\log(c)
 \end{align*}
 
 Für die einzelnen $H(E|a)$ gilt:
 \begin{align*}
 	H(E|0) &= p(0|0) \cdot \log \left(\frac{1}{p(0|0)} \right) + p(1|0) \cdot \log \left(\frac{1}{p(1|0)} \right) + p(2|0) \cdot \log \left(\frac{1}{p(2|0)} \right)\\
-	&= p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}\\
+	&= p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p} = -p\log(p) - (1-p)\log(1-p)\\
 	H(E|1) &= p(0|1) \cdot \log \left(\frac{1}{p(0|1)} \right) + p(1|1) \cdot \log \left(\frac{1}{p(1|1)} \right) + p(2|1) \cdot \log \left(\frac{1}{p(2|1)} \right)\\
-	&= p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}\\
+	&= p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}= -p\log(p) - (1-p)\log(1-p)\\
 	H(E|2) &= p(0|2) \cdot \log \left(\frac{1}{p(0|2)} \right) + p(1|2) \cdot \log \left(\frac{1}{p(1|2)} \right) + p(2|2) \cdot \log \left(\frac{1}{p(2|2)} \right) \\
 	&= 0
 \end{align*}
@@ -138,6 +140,21 @@ Für die Streuentropie gilt:
 \begin{align*}
 	H(E|Q) &= a \cdot (p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}) + b \cdot (p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p}) \\
 	&= (a+b) \cdot (p\log \frac{1}{p} + (1-p) \log \frac{1}{1-p})
+\end{align*}
+
+Für die mittlere Transinformation gilt:
+\begin{align*}
+	I(Q|E) &= H(E) - H(E|Q) 
+\end{align*}
+Es kann eine Vereinfachung erreicht werden da man zeigen kann dass die mittlere Transinformation nur dann maximal werden kann falls gilt $a = b$.
+Es gilt dass $a + b = 1 - c$ und die Streuentropie ist unabhängig von dem Verhältnis von $a$ und $b$.
+Der Anteil an der Outputentropie von $a$ und $b$, i.e.  $-(ap + b - bp)\log(ap + b - bp) -(bp + a - ap)\log-(bp + a - ap)$ ist maximal bei $a = b$.
+
+$H(E)$ kann also durch folgendes $H'(E)$ ersetzt werden:
+\begin{align*}
+	H'(E) &= -(ap + a - ap)\log(ap + a - ap) -(ap + a - ap)\log(ap + a - ap) + c \log \left(\frac{1}{c} \right)\\
+	&= -2a\log(a) + c \log \left(\frac{1}{c} \right) = 2 a\log \left( \frac{1}{a}\right) + c \log \left(\frac{1}{c} \right) \\
+	&= 2 a\log \left( \frac{1}{a}\right) + (1-2a) \log \left(\frac{1}{1 - 2a} \right)
 \end{align*}
 
 Maximiere die Funktion:\\
