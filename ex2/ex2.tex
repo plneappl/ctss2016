@@ -195,7 +195,7 @@ $H(Q|E) \geq 0$ gilt da sowohl $p_E(b), p(a|b)$ als auch $\log\left( \frac{1}{p(
 Zeige $I(Q,E) = H(Q) - H(Q|E)$
 \begin{align*}
 	I(Q,E) &=_{Def} H(E) - H(E|Q) \\
-	&= \sum\limits_{b\in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)}\right) -
+	&= H(E) -
 	\sum\limits_{a\in A}\sum\limits_{b \in B} p_Q(a) \cdot p(b|a) \cdot \log \left( \frac{1}{p(b|a)}\right) \\
 	&\underset{Bayes}{=}  H(E) -
 	\sum\limits_{a\in A}\sum\limits_{b \in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{p_Q(a)}{p(a|b) \cdot p_E(b)} \right)\\
@@ -206,9 +206,8 @@ Zeige $I(Q,E) = H(Q) - H(Q|E)$
 	\\	 
 	&+
 	\sum\limits_{a\in A}\sum\limits_{b \in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{1}{p_Q(a)} \right)\\
-	&= \\
-	&= \sum\limits_{a\in A} p_Q(a) \cdot \log \left( \frac{1}{p_Q(a)}\right)
-	- \sum\limits_{a\in A}\sum\limits_{b\in B} p_E(b) \cdot p(a|b) \cdot \log \left( \frac{1}{p(a|b)} \right) \\
+	&= H(E) - H(Q|E) - \sum\limits_{b\in B} p_E(b) \cdot \log \left( \frac{1}{p_E(b)} \right) + \sum\limits_{a \in A} p_Q(a) \cdot \log \left( \frac{1}{p_Q(a)} \right)\\
+	&= H(E) - H(Q|E) - H(E) + H(Q) \\
 	&= H(Q) - H(Q|E)
 \end{align*}
 \end{myList}
