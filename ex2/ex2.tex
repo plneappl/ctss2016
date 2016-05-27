@@ -87,7 +87,7 @@ Für die mittlere Transinformation gilt:
 Maximiere die Funktion:\\
 Es gilt:
 \begin{equation*}
-	\frac{dI(Q|E)}{dp} = \frac{\log(2-p)- \log(p+1)}{\log_e(16)}
+	\frac{dI(Q|E)}{dp} = \frac{\log(2-p)- \log(p+1)}{4}
 \end{equation*}
 Der Scheitelpunkt der Kurve wird durch Nullsetzen bestimmt:
 \begin{align*}
@@ -173,6 +173,7 @@ Setze die Gleichung gleich $0$ und löse nach $a$ auf:
 	a = \frac{1}{p^{-p} \cdot (1-p)^{p-1} + 2}
 \end{align*}
 Wenn man diesen Wert für $a$ in die Gleichung für $I(Q|E)$ einsetzt so erhält man die Kapazität des Kanals in Abhängigkeit von $p$.
+($b$ und $c$ ergeben sich aus $a$).
 
 Als \enquote{sanity check} überprüfen wir die Lösung für die beiden Werte $p = 1$ und $p = 0.5$.
 \begin{align*}
@@ -300,7 +301,7 @@ $d=\min\set{3, 2, 3, 2, 3, 4, 3, 4, 3, 2, 3, 3, 3, 3, 2, 3, 2, 3, 3, 2, 3} = 2$
 # Wieviele Fehler kann $\C$ erkennen / korrigieren?\\
 $\C$ kann 1 Fehler erkennen und keinen sicher korrigieren.
 
-TODO
+
 \end{myList}
 
 \section*{Aufgabe 10}
@@ -310,7 +311,6 @@ Schreiben Sie ein Programm, das zufällig einen 4-dimensionalen Untervektorraum 
 Welchen durchschnittlichen Minimalabstand erhalten Sie nach 100 Programmdurchläufen?\\
 Im Schnitt ist der Minimalabstand 2.9987 (über 10000 Iterationen).
 
-TODO
 
 #
 Konstruieren Sie einen binären $[10,4]$-Code mit möglichst großen Minimalabstand.\\
@@ -324,7 +324,6 @@ Bester von uns gefundener Code:\\
 \end{array}},~~d(\C)=6
 \end{align*}
 
-TODO
 \end{myList}\end{document}
 
 
