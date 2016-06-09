@@ -175,8 +175,35 @@ gegeben.
 #
 Bestimmen Sie den Minimalabstand von $\C$.
 Wieviele Fehler kann $\C$ korrigieren?
+
+Nach Satz 3.10 gilt $d(\C) = wt(\C) = \min\limits_{r \in \N} \lbrace \text{Es gibt r linear abhängige Spalten in H} \rbrace$
+
+Der Rang der Matrix ist offensichtlich 5, da die Matrix schon in Zeilen-Stufen Form vorliegt und keine Nullzeile enthält.
+\begin{enumerate}
+	\item $r = 1:$ Unmöglich da der Nullvektor nicht in $H$ enthalten ist.
+	\item $r = 2:$ \ldots
+	\item $r = 3:$ \ldots
+	\item $r = 4:$
+	\item $r = 5:$
+\end{enumerate}
+
+Also hat $\C$ den Minimalabstand 5. Damit kann der Code $2$ Fehler korrigieren.
 #
 Zeigen Sie, dass $\C$ perfekt ist.
+
+Nach 3.14/3.15 ist $\C$ perfekt falls die folgende Gleichung für $\C$ gilt:
+\begin{equation*}
+	q^{n-k} = \sum\limits^{t}_{i = 0} \binom{n}{i} (q-1)^i
+\end{equation*}
+Wobei $t$ maximal sei mit $2t +1 \leq d(\C)$.
+
+Nach Aufgabenteil a) wissen wir dass $d(\C) = 5$, also muss $t =  2$ sein.
+Da wir als sonstige Werte haben $q = 3$, $n = 11$, $k = 6$(Da $H$ eine $(n-k) \times n$ Matrix ist) müssen wir zeigen:
+\begin{align}
+	243 &=  3^5 = \sum\limits_{i = 0}^{2} \binom{11}{i} (3-1)^i \\
+	&= \binom{11}{0} \cdot 2^0 + \binom{11}{1} 2^1 + \binom{11}{2} \cdot 2^2 \\
+	&= 1 + 22 + 220 = 243
+\end{align}
 \end{myList}
 TODO(David)
 
