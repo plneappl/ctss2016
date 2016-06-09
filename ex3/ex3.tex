@@ -12,7 +12,7 @@ Nach Satz 2.22 ist die Kapazität eines binär symmetrischen Kanals mit Fehlerwa
 \begin{align*}
 	C &= 1 - H_p = 1 + p \cdot \log p + (1-p)\cdot \log (1-p) \\
 	&= 1 + \frac{1}{4} \cdot \log \left(\frac{1}{4}\right) + \frac{3}{4}\cdot \log \left(\frac{3}{4}\right) \\
-	&\approx 1 -0.5 -0.311 = 0.189
+	&= \frac{3}{4} \log(3) - 1 \approx  0.189
 \end{align*} 
 #
 Bestimmen Sie $k,n \in \N$ so dass ein Code $\C$ der Länge $n$ über $\lbrace 0,1 \rbrace$ mit Rate $R = \frac{k}{n}$ und folgenden Eigenschaften existiert: \ldots
@@ -25,8 +25,25 @@ Es muss gelten:
 \end{enumerate}
 
 \begin{align*}
-	H_{p+\beta} &= (p + \beta)\cdot \log(p + \beta) + (1 - p - \beta) \log(1 - p - \beta)\\
-	&= 
+	H_{p+\beta} &= (p+ \beta) \log \left( \frac{1}{p + \beta}\right) + (1 -p - \beta) \log \left( \frac{1}{1-p-\beta}\right) \\
+	2^{H_{p + \beta}} &= 2^{(p+ \beta) \log \left( \frac{1}{p + \beta}\right)} \cdot 2^{(1 -p - \beta) \log \left( \frac{1}{1-p-\beta}\right)} \\
+	&=\left(2^{\log \left( \frac{1}{p + \beta}\right)}\right)^{p+\beta} \cdot \left(2^{\log \left( \frac{1}{1-p-\beta}\right)}\right)^{1 - p - \beta} \\
+	&=\left(\frac{1}{p+\beta} \right)^{p + \beta} \cdot \left(\frac{1}{1-p-\beta} \right)^{1-p-\beta} \\
+	&= \frac{1}{(p+\beta)^{p+\beta} \cdot (1-p-\beta)^{1-p-\beta}}
+\end{align*}
+
+Aus der Bedingung $2^{\frac{n \epsilon'}{4} > \frac{2}{\epsilon}}$ folgt:
+\begin{align*}
+	2^{\frac{n \epsilon'}{4}} &> \frac{2}{\epsilon} \\
+	\Leftrightarrow \frac{n \epsilon'}{4} &> \log \left( \frac{2}{\epsilon}\right)\\
+	\Leftrightarrow n &> \frac{\log\left( \frac{2}{\epsilon}\right) \cdot 4}{\epsilon'} = \log(200) \cdot 4 \cdot 100 \approx 3057 \\
+	\Leftarrow n &> 3058
+\end{align*}
+
+Aus der Bedingung $n > \frac{2p(1-p)}{\epsilon \cdot \beta^2}$ folgt:
+\begin{align*}
+	n &> \frac{2p(1-p)}{\epsilon \cdot \beta^2}\\
+	\Leftrightarrow n &> 25 \cdot \frac{1}{\beta^2}
 \end{align*}
 \end{myList}
 
