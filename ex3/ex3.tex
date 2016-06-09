@@ -39,7 +39,7 @@ Bestimme $q$ und $l$:
 \implies& l = 4\\
 &n=\frac{q^l-1}{q-1}=15 = \frac{q^4-1}{q-1} \\
 &\iff q^4 - 15q + 14 = 0\\
-q=2:&~ 2^4 - 30 + 14 = 30-30=0 \checkmark 
+q=2:&~ 2^4 - 30 + 14 = 30-30=0 \checkmark
 \end{align*}
 . Wähle zu jedem 1-dimensionalem Unterraum von $Z_2^4$ einen Vektor $\not= \mathbf 0$ und schreibe diese als Spaltenvektoren in die Prüfmatrix:\\
 $$H=\begin{pmatrix}
@@ -75,23 +75,68 @@ $$=\begin{pmatrix}
 Codieren Sie das Infowort $(0,1,0,1,0,1,0,1,0,1,0)$ mit der Erzeugermatrix aus a).\\\\
 \begin{align*}
 &\phantom{\phantom{}=\phantom{}}\begin{pmatrix}0&1&0&1&0&1&0&1&0&1&0\end{pmatrix}\cdot G\\
-&\overset{*^1}=\begin{pmatrix}3&2&5&2&0&1&0&1&0&1&0&1&0&1&0\end{pmatrix} \pmod 2\\
-&= \begin{pmatrix}1&0&1&0&0&1&0&1&0&1&0&1&0&1&0\end{pmatrix}
+&\overset{*^1}=\begin{pmatrix}1&0&1&0&0&1&0&1&0&1&0&1&0&1&0\end{pmatrix}
 \end{align*}
-{\small $*^1$ mit \url{https://www.symbolab.com} ausgerechnet}
+{\small $*^1$ mit python/numpy ausgerechnet}
 #
-Decodieren Sie das empfangene Wort $(0,0,0,0,0,1,0,0,0,1,0,0,0,0,0)$.\\\\
+Decodieren Sie das empfangene Wort $w=(0,0,0,0,0,1,0,0,0,1,0,0,0,0,0)$.\\\\
 \begin{align*}
-&\phantom{\phantom{}=\phantom{}}H\cdot \begin{pmatrix}0\\0\\0\\0\\0\\1\\0\\0\\0\\1\\0\\0\\0\\0\\0\end{pmatrix}\overset{*^1}=\begin{pmatrix}1\\0\\0\\1\end{pmatrix}
+&\phantom{\phantom{}=\phantom{}}H\cdot w^T = H\cdot \begin{pmatrix}0\\0\\0\\0\\0\\1\\0\\0\\0\\1\\0\\0\\0\\0\\0\end{pmatrix}\overset{*^1}=\begin{pmatrix}1\\0\\0\\1\end{pmatrix}
 \end{align*}
+Da $Hw^T\not=\mathbf 0$, ist $w$ kein Codewort. Es gibt 15 Wörter $w_1\ldots, w_{15}$ mit $d(w, w_i)=1$ für alle $i$. Wenn ein $w_i$ davon ein Codewort ist, decodiere $w$ zu $w_i$. Sonst decodiere $w$ zu $\mathbf 0$, da $d(w, \mathbf 0)=2$ und damit minimal ist.\\
+Matrix $W=\begin{pmatrix}w_1^T&w_2^T&\ldots&w_{15}^T\end{pmatrix}$:
+\begin{align*}
+W&=\begin{pmatrix}
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+1&1&1&1&1&1&1&1&1&1&1&1&1&1&1\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+1&1&1&1&1&1&1&1&1&1&1&1&1&1&1\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&0
+\end{pmatrix}+I_{15}\\
+&=\begin{pmatrix}
+1&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&1&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&1&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&1&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&0&1&0&0&0&0&0&0&0&0&0&0\\
+1&1&1&1&1&0&1&1&1&1&1&1&1&1&1\\
+0&0&0&0&0&0&1&0&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&1&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&1&0&0&0&0&0&0\\
+1&1&1&1&1&1&1&1&1&0&1&1&1&1&1\\
+0&0&0&0&0&0&0&0&0&0&1&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&1&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&1&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&1&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&0&1
+\end{pmatrix}\\
+H\cdot W&\overset{*^1}=\begin{pmatrix}
+0&1&1&1&0&0&0&1&1&1&0&0&0&0&0\\
+0&1&0&0&1&0&0&1&1&0&1&0&1&1&1\\
+0&0&1&0&0&1&0&1&0&1&1&1&0&1&1\\
+1&1&1&0&1&1&0&1&0&0&1&0&0&1&0
+\end{pmatrix}
+\end{align*}
+Da die siebte Spalte der 0-Vektor ist, decodieren wir $w$ zu dem Codewort $$w_7=\begin{pmatrix}0&0&0&0&0&1&1&0&0&1&0&0&0&0&0\end{pmatrix}$$ Das Originalwort $w'$, sodass
+$w'\cdot G=w_7$, ist, da $G$ die Einheitsmatrix enthält, leicht abzulesen (die letzten 11 Spalten) als
+$$w'=\begin{pmatrix}0&1&1&0&0&1&0&0&0&0&0\end{pmatrix}$$
 \end{myList}
-TODO(Simon)
 
 \section*{Aufgabe 14}
 Der Code $\C \subseteq \Z^{11}_3$ sei durch seine Kontrollmatrix
 
 \begin{equation*}
-	H = 
+	H =
 	\begin{pmatrix}
 	0 & 2 & 1 & 1 & 2 & 2 & 1 & 0 & 0 & 0 & 0 \\
 	2 & 0 & 2 & 1 & 1 & 2 & 0 & 1 & 0 & 0 & 0 \\
@@ -128,8 +173,3 @@ $p=5$ und $\C$ ist ein Hamming-Code über $\Z_5$. Welche Dimension hat dieser Ha
 TODO(Simon)
 
 \end{document}
-
-
-
-
-
