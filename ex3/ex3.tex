@@ -1,0 +1,135 @@
+\input{../base.tex}
+\fancyhead[L]{Übungsblatt 3}
+\setcounter{MaxMatrixCols}{20}
+\begin{document}
+\section*{Aufgabe 11}
+Gegeben sei ein binär symmetrischer Kanal mit Fehlerwahrscheinlichkeit $p = \frac{1}{4}$
+\begin{myList}
+#
+Berechnen Sie die Kapazität $C$ des Kanals.
+#
+Bestimmen Sie $k,n \in \N$ so dass ein Code $\C$ der Länge $n$ über $\lbrace 0,1 \rbrace$ mit Rate $R = \frac{k}{n}$ und folgenden Eigenschaften existiert: \ldots
+\end{myList}
+TODO(David)
+
+\section*{Aufgabe 12}
+Sei $\C$ der binäre lineare Code mit der Erzeugermatrix
+\begin{equation*}
+	G = \begin{pmatrix}
+		1 & 1 & 0 & 0 & 1 & 0 \\
+		1 & 0 & 1 & 1 & 1 & 0 \\
+		1 & 1 & 1 & 0 & 0 & 1
+	\end{pmatrix}
+\end{equation*}
+\begin{myList}
+#
+Bestimmen Sie eine Kontrollmatrix für $\C$.
+#
+Bestimmen Sie den Minimalabstand von $\C$.
+\end{myList}
+TODO(Simon)
+
+\section*{Aufgabe 13}
+\begin{myList}
+#
+Konstruieren Sie eine Kontrollmatrix und eine Erzeugermatrix für einen $[15,11]$-Hamming-Code $\C$.\\\\
+Bestimme $q$ und $l$:
+\begin{align*}
+&n=15, k=11=n-l\\
+\implies& l = 4\\
+&n=\frac{q^l-1}{q-1}=15 = \frac{q^4-1}{q-1} \\
+&\iff q^4 - 15q + 14 = 0\\
+q=2:&~ 2^4 - 30 + 14 = 30-30=0 \checkmark 
+\end{align*}
+. Wähle zu jedem 1-dimensionalem Unterraum von $Z_2^4$ einen Vektor $\not= \mathbf 0$ und schreibe diese als Spaltenvektoren in die Prüfmatrix:\\
+$$H=\begin{pmatrix}
+1&0&0&0&1&1&1&0&0&0&1&1&1&1&1\\
+0&1&0&0&1&0&0&1&1&0&1&0&1&1&1\\
+0&0&1&0&0&1&0&1&0&1&1&1&0&1&1\\
+0&0&0&1&0&0&1&0&1&1&0&1&1&0&1
+\end{pmatrix}$$
+Da $H$ von der Form
+$$\begin{pmatrix}
+I_4 & M_1
+\end{pmatrix}$$
+ist, kann die Erzeugermatrix direkt aufgeschrieben werden als
+$$G=\begin{pmatrix}
+ M_1^T & -I_{11}
+\end{pmatrix}\overset{\Z_2}=\begin{pmatrix}
+ M_1^T & I_{11}
+\end{pmatrix}$$
+$$=\begin{pmatrix}
+1&1&0&0&1&0&0&0&0&0&0&0&0&0&0\\
+1&0&1&0&0&1&0&0&0&0&0&0&0&0&0\\
+1&0&0&1&0&0&1&0&0&0&0&0&0&0&0\\
+0&1&1&0&0&0&0&1&0&0&0&0&0&0&0\\
+0&1&0&1&0&0&0&0&1&0&0&0&0&0&0\\
+0&0&1&1&0&0&0&0&0&1&0&0&0&0&0\\
+1&1&1&0&0&0&0&0&0&0&1&0&0&0&0\\
+1&0&1&1&0&0&0&0&0&0&0&1&0&0&0\\
+1&1&0&1&0&0&0&0&0&0&0&0&1&0&0\\
+1&1&1&0&0&0&0&0&0&0&0&0&0&1&0\\
+1&1&1&1&0&0&0&0&0&0&0&0&0&0&1
+\end{pmatrix}$$
+#
+Codieren Sie das Infowort $(0,1,0,1,0,1,0,1,0,1,0)$ mit der Erzeugermatrix aus a).\\\\
+\begin{align*}
+&\phantom{\phantom{}=\phantom{}}\begin{pmatrix}0&1&0&1&0&1&0&1&0&1&0\end{pmatrix}\cdot G\\
+&\overset{*^1}=\begin{pmatrix}3&2&5&2&0&1&0&1&0&1&0&1&0&1&0\end{pmatrix} \pmod 2\\
+&= \begin{pmatrix}1&0&1&0&0&1&0&1&0&1&0&1&0&1&0\end{pmatrix}
+\end{align*}
+{\small $*^1$ mit \url{https://www.symbolab.com} ausgerechnet}
+#
+Decodieren Sie das empfangene Wort $(0,0,0,0,0,1,0,0,0,1,0,0,0,0,0)$.\\\\
+\begin{align*}
+&\phantom{\phantom{}=\phantom{}}H\cdot \begin{pmatrix}0\\0\\0\\0\\0\\1\\0\\0\\0\\1\\0\\0\\0\\0\\0\end{pmatrix}\overset{*^1}=\begin{pmatrix}1\\0\\0\\1\end{pmatrix}
+\end{align*}
+\end{myList}
+TODO(Simon)
+
+\section*{Aufgabe 14}
+Der Code $\C \subseteq \Z^{11}_3$ sei durch seine Kontrollmatrix
+
+\begin{equation*}
+	H = 
+	\begin{pmatrix}
+	0 & 2 & 1 & 1 & 2 & 2 & 1 & 0 & 0 & 0 & 0 \\
+	2 & 0 & 2 & 1 & 1 & 2 & 0 & 1 & 0 & 0 & 0 \\
+	1 & 2 & 0 & 2 & 1 & 2 & 0 & 0 & 1 & 0 & 0 \\
+	1 & 1 & 2 & 0 & 2 & 2 & 0 & 0 & 0 & 1 & 0 \\
+	2 & 1 & 1 & 2 & 0 & 2 & 0 & 0 & 0 & 0 & 1
+	\end{pmatrix}
+\end{equation*}
+gegeben.
+(Es handelt sich um den ternären Golay-Code.)
+\begin{myList}
+#
+Bestimmen Sie den Minimalabstand von $\C$.
+Wieviele Fehler kann $\C$ korrigieren?
+#
+Zeigen Sie, dass $\C$ perfekt ist.
+\end{myList}
+TODO(David)
+
+\section*{Aufgabe 15}
+\begin{myList}
+#
+Sei $\C$ ein linearer MDS-Code der Länge $n$ über $K$, $|K| = q$ mit $d(\C) = 3$.
+Zeigen Sie, dass $n \leq q + 1$.
+(Hinweis: Kugelpackungsschranke)
+#
+Welche Hamming-Codes sind MDS-Codes?
+\end{myList}
+TODO(David)
+
+\section*{Aufgabe 16}
+Sei $p$ eine Primzahl. Zeigen Sie, dass für einen linearen perfekten Code $\C$ der Länge 6 über $\Z_p$ gilt:\\
+$p=5$ und $\C$ ist ein Hamming-Code über $\Z_5$. Welche Dimension hat dieser Hamming-Code?
+TODO(Simon)
+
+\end{document}
+
+
+
+
+
