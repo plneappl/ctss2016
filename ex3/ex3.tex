@@ -7,10 +7,28 @@ Gegeben sei ein binär symmetrischer Kanal mit Fehlerwahrscheinlichkeit $p = \fr
 \begin{myList}
 #
 Berechnen Sie die Kapazität $C$ des Kanals.
+
+Nach Satz 2.22 ist die Kapazität eines binär symmetrischen Kanals mit Fehlerwahrscheinlichkeit $p$ genau:
+\begin{align*}
+	C &= 1 - H_p = 1 + p \cdot \log p + (1-p)\cdot \log (1-p) \\
+	&= 1 + \frac{1}{4} \cdot \log \left(\frac{1}{4}\right) + \frac{3}{4}\cdot \log \left(\frac{3}{4}\right) \\
+	&\approx 1 -0.5 -0.311 = 0.189
+\end{align*} 
 #
 Bestimmen Sie $k,n \in \N$ so dass ein Code $\C$ der Länge $n$ über $\lbrace 0,1 \rbrace$ mit Rate $R = \frac{k}{n}$ und folgenden Eigenschaften existiert: \ldots
+
+Bestimme $\beta$.
+Es muss gelten:
+\begin{enumerate}
+	\item $\beta \leq \frac{1}{2} - p = \frac{1}{4}$
+	\item $ H_{p+\beta} - H_{p} < \frac{0.001}{4} = \frac{1}{4000}$
+\end{enumerate}
+
+\begin{align*}
+	H_{p+\beta} &= (p + \beta)\cdot \log(p + \beta) + (1 - p - \beta) \log(1 - p - \beta)\\
+	&= 
+\end{align*}
 \end{myList}
-TODO(David)
 
 \section*{Aufgabe 12}
 Sei $\C$ der binäre lineare Code mit der Erzeugermatrix
@@ -178,14 +196,7 @@ Wieviele Fehler kann $\C$ korrigieren?
 
 Nach Satz 3.10 gilt $d(\C) = wt(\C) = \min\limits_{r \in \N} \lbrace \text{Es gibt r linear abhängige Spalten in H} \rbrace$
 
-Der Rang der Matrix ist offensichtlich 5, da die Matrix schon in Zeilen-Stufen Form vorliegt und keine Nullzeile enthält.
-\begin{enumerate}
-	\item $r = 1:$ Unmöglich da der Nullvektor nicht in $H$ enthalten ist.
-	\item $r = 2:$ \ldots
-	\item $r = 3:$ \ldots
-	\item $r = 4:$
-	\item $r = 5:$
-\end{enumerate}
+Wir zeigen dass $d(\C) = 5$, müssen also zeigen dass es keine 4-elementige Teilmenge von Spaltenvektoren aus $H$ gibt die linear abhängig ist.
 
 Also hat $\C$ den Minimalabstand 5. Damit kann der Code $2$ Fehler korrigieren.
 #
@@ -205,7 +216,6 @@ Da wir als sonstige Werte haben $q = 3$, $n = 11$, $k = 6$(Da $H$ eine $(n-k) \t
 	&= 1 + 22 + 220 = 243
 \end{align}
 \end{myList}
-TODO(David)
 
 \section*{Aufgabe 15}
 \begin{myList}
@@ -213,11 +223,27 @@ TODO(David)
 Sei $\C$ ein linearer MDS-Code der Länge $n$ über $K$, $|K| = q$ mit $d(\C) = 3$.
 Zeigen Sie, dass $n \leq q + 1$.
 (Hinweis: Kugelpackungsschranke)
+
+Aus $\C$ MDS Code und $d = 3$ wissen wir dass $k = n-d +1 = n-2$.\\
+Aus $d(\C) = 3$ folgt $ t = 1$.\\
+Setze diese beiden Werte in die Formel der Kugelpackungsschranke ein und erhalte:
+\begin{align*}
+	\sum\limits_{i = 0}^{1} \binom{n}{i}(q-1)^i &\leq q^2 \\
+	\Leftrightarrow 1 + n\cdot (q-1) &\leq q^2 \\
+	\Leftrightarrow n &\leq \frac{q^2 -1}{q - 1} = \frac{(q + 1)\cdot (q - 1)}{q - 1} = q + 1
+\end{align*}
 #
 Welche Hamming-Codes sind MDS-Codes?
-\end{myList}
-TODO(David)
 
+Sei $\C$ perfekter $[n,k]$-Code mit $d(\C) = 3$ über Alphabet $K$ mit $|K| = q$ und $q$ Primzahlpotenz.\\
+Dann gilt:
+\begin{itemize}
+	\item $\C$ MDS $\Leftrightarrow k = n-2$ (Definition von MDS-Codes)
+	\item $\C$ Hamming-Code $\Leftrightarrow n = \frac{q^{n-k}-1}{q-1}$ (Definition Hamming-Code)
+	\item Daraus folgt $\C$ Hamming-Code und MDS $\Leftrightarrow n = \frac{q^2 -1}{q-1} = q+1$
+\end{itemize}
+Also sind exakt die Hamming-Codes MDS-Codes für die gilt $n = q + 1$.
+\end{myList}
 \section*{Aufgabe 16}
 Sei $p$ eine Primzahl. Zeigen Sie, dass für einen linearen perfekten Code $\C$ der Länge 6 über $\Z_p$ gilt:\\
 $p=5$ und $\C$ ist ein Hamming-Code über $\Z_5$. Welche Dimension hat dieser Hamming-Code?\\\\
