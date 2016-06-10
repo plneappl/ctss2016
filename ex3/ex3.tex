@@ -222,12 +222,61 @@ gegeben.
 \begin{myList}
 #
 Bestimmen Sie den Minimalabstand von $\C$.
-Wieviele Fehler kann $\C$ korrigieren?
+Wieviele Fehler kann $\C$ korrigieren?\medskip
 
-Nach Satz 3.10 gilt $d(\C) = wt(\C) = \min\limits_{r \in \N} \lbrace \text{Es gibt r linear abhängige Spalten in H} \rbrace$
+Nach Satz 3.10 gilt $d(\C) = wt(\C) = \min\limits_{r \in \N} \lbrace \text{Es gibt r linear abhängige Spalten in H} \rbrace$.
+Im folgenden seien die Spaltenvektoren als $v_1$ bis $v_{11}$ bezeichnet.
 
-Wir zeigen dass $d(\C) = 5$, müssen also zeigen dass es keine 4-elementige Teilmenge von Spaltenvektoren aus $H$ gibt die linear abhängig ist.
+Wir wollen zeigen dass $d(\C) = 5$, müssen also zeigen dass es keine 4-elementige Teilmenge von Spaltenvektoren aus $H$ gibt die linear abhängig ist und dass es eine 5-elementige Teilmenge von Spaltenvektoren aus $H$ gibt die linear abhängig ist.
 
+Der zweite Teil ist einfach, da z.B. $\lbrace v_1,v_8,v_9,v_{10},v_{11} \rbrace$ linear abhängig sind. Zeige also dass es keine 4-elementige Teilmenge linear abhängiger Vektoren gibt:\medskip
+
+Die Spaltenvektoren lassen sich in 2 Gruppen aufteilen, die Gruppe $\lbrace v_1,v_2,v_3,v_4,v_5 \rbrace$ und die Gruppe $\lbrace v_6,v_7,v_8,v_9,v_{10},v_{11} \rbrace$.
+Dass es aus der zweiten Gruppe keine 4 Vektoren geben kann die linear abhängig sind ist offensichtlich.
+
+Die Vektoren $v_1$--$v_5$ sind identisch modulo eines Shifts der Werte um eine Position nach unten.
+Für die Behauptung reicht es daher zu zeigen dass zum Vektor $v_1$ keine 3 weiteren Vektoren gibt sodass die entstehende Menge linear abhängig wird.
+Das Argument überträgt sich durch die \enquote{Shiftsymmetrie} dann auch auf die Vektoren $v_2$--$v_5$.
+
+Die folgende Tabelle trägt die entstehenden Spaltenvektoren auf die enstehen wenn zu $v_1$ einer der Vektoren $v_2$--$v_5$ hinzuaddiert wird, die zweite und neunte Zeile enthält dabei den Wert der beiden Koeffizienten.
+\begin{center}
+$
+\begin{array}{cccc|cccc}
+v_1 + v_2 &  &  &  & v_1 + v_3 &  &  &  \\
+1,1 & 1,2 & 2,1 & 2,2 & 1,1 & 1,2 & 2,1 & 2,2 \\
+2 & 1 & 2 & 1 & 1 & 2 & 1 & 2 \\
+2 & 2 & 1 & 1 & 1 & 0 & 0 & 2 \\
+0 & 2 & 1 & 0 & 1 & 1 & 2 & 2 \\
+2 & 0 & 0 & 1 & 0 & 2 & 1 & 0 \\
+0 & 1 & 2 & 0 & 0 & 1 & 2 & 0 \\
+\hline
+v_1 + v_4 &  &  &  & v_1 + v_5 &  &  &  \\ 
+1,1 & 1,2 & 2,1 & 2,2 & 1,1 & 1,2 & 2,1 & 2,2 \\ 
+1 & 2 & 1 & 2 & 2 & 1 & 2 & 1 \\ 
+0 & 1 & 2 & 0 & 0 & 1 & 2 & 0 \\ 
+0 & 2 & 1 & 0 & 2 & 0 & 0 & 1 \\ 
+1 & 1 & 2 & 2 & 0 & 2 & 1 & 0 \\ 
+1 & 0 & 0 & 2 & 2 & 2 & 1 & 1 \\
+\end{array} 
+$
+\end{center}
+
+In dieser Tabelle kann jeweils der zweite Teil pro Block ignoriert werden da er nur den ersten Teil invertiert enthält.
+(Also alle Spalten über denen (2,1) oder (2,2) steht.)\medskip
+
+Betrachte nun die Spalten die jeweils mit (1,1) überschrieben sind. Sie enthalten jeweils 2 Nulleinträge und entweder 3 1-Einträge oder 3 2-Einträge.
+Wir führen das Argument am Beispiel von $1 \cdot v_1 + 1 \cdot v_2$ vor, es funktioniert aber analog zu den anderen Kombinationen von $v_1$ mit $v_3$--$v_5$.
+Um zwei weitere Vektoren zu finden die hinzugefügt eine linear abhängige Menge ergeben müssen wir 2 Vektoren finden die an dritter und fünfter Position Null ergeben und an erster zweiter und vierter Position alle 1 oder alle 2 ergeben, i.e. $(1,1,0,1,0)^t$ oder $(2,2,0,2,0)^t$.
+$v_3$ und $v_5$ scheiden aus da sie an 3. bzw 5. Stelle eine Null haben und als weiterer Vektor damit nur $v_7$--$v_9$ in Frage kämen, was aber offensichtlich nicht den gewünschten Vektor produziert.
+$v_4$ hat an vierter Stelle eine Null, und keiner der Vektoren aus $v_6$--$v_{11}$ ergibt zusammen mit $v_4$ den gesuchten Vektor($v_3$ und $v_5$ wurden ja schon ausgeschlossen).\medskip
+
+Betrachte nun $1 \cdot v_1 + 2 \cdot v_2$, wieder stellvertretend für die anderen Blöcke.
+Gesucht ist also eine Kombination von 2 Vektoren die $(2,1,1,0,2)$ oder $(1,2,2,0,1)$ ergibt.
+$v_3$ scheidet aus da $v_3$ an dritter Position eine Null hat und weder $1 \cdot v_2$,$2 \cdot v_5$, $1 \cdot v_6$ noch $2 \cdot v_9$ zu $v_3$ addiert den gesuchten Vektor ergeben.\\
+$v_4$ scheidet aus da er an vierter Stelle eine $0$ hat und damit als zweiter Vektor nur noch $v_7,v_8,v_9,v_{11}$ in Betracht kommen von denen keiner funktionert.\\
+$v_5$ scheidet aus da er an fünfter Stelle eine Null hat und keine Kombination mit $v_6$ oder $v_{11}$ den gesuchten Vektor erzeugt.\medskip
+
+Damit sind alle möglichen Kombinationen von 4 Vektoren erschöpft, es kann also keine Menge von 4 linear abhängigen Vektoren geben.
 Also hat $\C$ den Minimalabstand 5. Damit kann der Code $2$ Fehler korrigieren.
 #
 Zeigen Sie, dass $\C$ perfekt ist.
@@ -240,11 +289,12 @@ Wobei $t$ maximal sei mit $2t +1 \leq d(\C)$.
 
 Nach Aufgabenteil a) wissen wir dass $d(\C) = 5$, also muss $t =  2$ sein.
 Da wir als sonstige Werte haben $q = 3$, $n = 11$, $k = 6$(Da $H$ eine $(n-k) \times n$ Matrix ist) müssen wir zeigen:
-\begin{align}
+\begin{align*}
 	243 &=  3^5 = \sum\limits_{i = 0}^{2} \binom{11}{i} (3-1)^i \\
 	&= \binom{11}{0} \cdot 2^0 + \binom{11}{1} 2^1 + \binom{11}{2} \cdot 2^2 \\
 	&= 1 + 22 + 220 = 243
-\end{align}
+\end{align*}
+Damit ist die Behauptung gezeigt.
 \end{myList}
 
 \section*{Aufgabe 15}
