@@ -17,20 +17,21 @@ Nach Satz 2.22 ist die Kapazität eines binär symmetrischen Kanals mit Fehlerwa
 #
 Bestimmen Sie $k,n \in \N$ so dass ein Code $\C$ der Länge $n$ über $\lbrace 0,1 \rbrace$ mit Rate $R = \frac{k}{n}$ und folgenden Eigenschaften existiert: \ldots
 
-Bestimme $\beta$.
-Es muss gelten:
-\begin{enumerate}
-	\item $\beta \leq \frac{1}{2} - p = \frac{1}{4}$
-	\item $ H_{p+\beta} - H_{p} < \frac{0.001}{4} = \frac{1}{4000}$
-\end{enumerate}
+\underline{Bestimme $\beta$:}
 
+Aus der Bedingung $ H_{p+\beta} - H_{p} < \frac{0.01}{4} = \frac{1}{400 }$, wenn $p + \beta$ durch $\lambda$ abgekürzt wird, folgt:
 \begin{align*}
-	H_{p+\beta} &= (p+ \beta) \log \left( \frac{1}{p + \beta}\right) + (1 -p - \beta) \log \left( \frac{1}{1-p-\beta}\right) \\
-	2^{H_{p + \beta}} &= 2^{(p+ \beta) \log \left( \frac{1}{p + \beta}\right)} \cdot 2^{(1 -p - \beta) \log \left( \frac{1}{1-p-\beta}\right)} \\
-	&=\left(2^{\log \left( \frac{1}{p + \beta}\right)}\right)^{p+\beta} \cdot \left(2^{\log \left( \frac{1}{1-p-\beta}\right)}\right)^{1 - p - \beta} \\
-	&=\left(\frac{1}{p+\beta} \right)^{p + \beta} \cdot \left(\frac{1}{1-p-\beta} \right)^{1-p-\beta} \\
-	&= \frac{1}{(p+\beta)^{p+\beta} \cdot (1-p-\beta)^{1-p-\beta}}
+	H_\lambda - H_p &< \frac{0.01}{4} = \frac{1}{400} \\
+	\Leftrightarrow H_\lambda &< \frac{1}{400} + 2 - \frac{3}{4}\log 3 \\
+	\Leftrightarrow \lambda \log \frac{1}{\lambda} + (1-\lambda) \log(\frac{1}{1-\lambda}) &< \frac{1}{400} + 2 - \frac{3}{4}\log 3 \\
+	\Leftrightarrow \lambda &< 0.251583 \\
+	\Leftrightarrow \beta &< 0.001583
 \end{align*}
+Um n später möglichst klein wählen zu können sollte $\beta$ möglichst groß gewählt werden.
+Wir wählen also $\beta = 0.00158$.
+Dieses $\beta$ erfüllt natürlich auch die andere Ungleichung $\beta \leq \frac{1}{2} - p = 0.25$.
+
+\underline{Bestimme $n$:}
 
 Aus der Bedingung $2^{\frac{n \epsilon'}{4} > \frac{2}{\epsilon}}$ folgt:
 \begin{align*}
@@ -43,8 +44,20 @@ Aus der Bedingung $2^{\frac{n \epsilon'}{4} > \frac{2}{\epsilon}}$ folgt:
 Aus der Bedingung $n > \frac{2p(1-p)}{\epsilon \cdot \beta^2}$ folgt:
 \begin{align*}
 	n &> \frac{2p(1-p)}{\epsilon \cdot \beta^2}\\
-	\Leftrightarrow n &> 25 \cdot \frac{1}{\beta^2}
+	\Leftrightarrow n &> 37.5 \cdot \frac{1}{\beta^2}
 \end{align*}
+Für $\beta = 0.00158$ ergibt sich $\approx 1.5 \cdot 10^7$.
+Wir wählen also $n = 1.6\cdot 10^7$.
+(Hier könnte man $n$ natürlich noch genauer bestimmen.)
+
+\underline{Bestimme $k$:}
+
+Für die Bedingung $C - \epsilon < \frac{k}{n} < C - \frac{\epsilon}{2}$ erhalten wir, wenn wir die Werte für $n, \epsilon$ und $C$ einsetzen:
+\begin{align*}
+	0,179 < \frac{k}{1.6\cdot 10^7} < 0.184 \\
+	\Leftrightarrow 0.179 \cdot 1.6\cdot 10^7 < k < 0.184 \cdot 1.6\cdot 10^7
+\end{align*}
+Wir wählen z.B. $k = 0.18 \cdot 1.6 \cdot 10^7 = 2 880 000$.
 \end{myList}
 
 \section*{Aufgabe 12}
