@@ -1,0 +1,68 @@
+\input{../base.tex}
+\fancyhead[L]{Übungsblatt 4}
+\setcounter{MaxMatrixCols}{20}
+\begin{document}
+\section*{Aufgabe 17}
+Sei $\C$ ein linearer $[n,k]$-Code über dem endlichen Körper $K$ mit Kontrollmatrix $H$.
+Sei $y \in K^n \setminus \C$. Zeigen Sie:
+\begin{myList}
+#
+Genau dann existiert ein $c \in \C$ mit $d(c,y)=1$, wenn $Hy^t = a \cdot s$ für ein $a \in K \setminus \lbrace 0 \rbrace$ und eine Spalte $s$ von $H$.\\
+Ist dabei $s$ die $i$-te Spalte von $H$, so gilt $d(c,y) = 1$ für $c = y -a\cdot e_i \in \C$, wobei $e_i$ der $i$-te kanonische Basisvektor des $K^n$ ist.
+#
+Die Anzahl der Spalten von $H$, die ein von 0 verschiedenes Vielfaches von $Hy^t$ sind, ist gleich der Anzahl der Codewörter $c$ mit $d(c,y) = 1$.
+#
+Entwickeln Sie unter Verwendung von a) ein schnelles Decodierverfahren für die Hamming-Codes.
+\end{myList}
+\section*{Aufgabe 18}
+Sei $\C = \lbrace (x_1,x_2,x_3,x_4,x_5) \in \Z^5_7 : x_4 = 2x_1 + 4x_3, x_5 = x_1 + 2x_2 + 2x_3 \rbrace$
+Bestimmen Sie Erzeuger und Kontrollmatrizen für $\C$ und $\C^\bot$.
+\section*{Aufgabe 19}
+Sei $\C$ der $[7,4]$-Code über $\Z_3$ mit Erzeugermatrix
+\begin{equation*}
+	G =
+	\begin{pmatrix}
+	2 & 1 & 0 & 1 & 1 & 0 & 0 \\
+	2 & 1 & 0 & 2 & 0 & 2 & 0 \\
+	0 & 2 & 0 & 2 & 0 & 2 & 1 \\
+	0 & 1 & 1 & 1 & 0 & 2 & 0
+	\end{pmatrix}
+\end{equation*}
+\begin{myList}
+#
+Zeigen Sie, dass $\C$ eine Erzeugermatrix in Standardform besitzt.
+#
+Bestimmen Sie eine Erzeugermatrix von $C^\bot$.
+#
+Bestimmen Sie $C \cap C^\bot$.
+\end{myList}
+\section*{Aufgabe 20}
+\begin{myList}
+#
+Bestimmen Sie alle selbstdualen Hamming-Codes.
+(Hinweis: Nicht nur auf den binären Fall beschränken!)
+#
+Konstruieren Sie für jede gerade natürliche Zahl $n$ einen selbstdualen binären linearen Code der Länge $n$.
+\end{myList}
+\section*{Aufgabe 21}
+Sei $\C$ der binäre $[15,4]$-Simplex Code mit Erzeugermatrix
+\begin{equation*}
+	G = 
+	\begin{pmatrix}
+	1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+	1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+	0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1
+	\end{pmatrix}
+\end{equation*}
+\begin{myList}
+#
+Zeigen Sie, dass $\C$ 3-Fehler-korrigierend ist.
+#
+Bei der Übertragung eines Codeworts aus $\C$ seien maximal 3 Fehler aufgetreten. Das empfangene Wort sei:
+\begin{equation*}
+	z = (0,1,1,1,1,0,0,0,0,0,1,1,1,1,1)
+\end{equation*}
+Entscheiden Sie mittels (einstufiger) Majority-Logic-Decodierung, ob an Position 4 ein Fehler aufgetreten ist.
+\end{myList}
+\end{document}
