@@ -64,20 +64,35 @@ In der Gleichung $|\C| = \frac{q^{2n}}{1 + 2n(q-1)}$ können wir $2n$ im Nenner 
 Sowohl die Erzeugermatrix als auch die Kontrollmatrix von $\C$ muss eine $n \times 2n$-Matrix sein.
 Desweiteren muss die Erzeugermatrix von $\C$ immer auch eine Kontrollmatrix von $\C$ sein.
 Das folgt aus Lemma X welches behauptet dass die Erzeugermatrix von $\C$ eine Kontrollmatrix von $\C^\bot = \C$ ist. 
-Ausserdem muss jede Kontrollmatrix von $\C$ eine Erzeugermatrix von $\C^\bot = \C$ sein.\medskip
+Aus dem selben Grund muss Ausserdem jede Kontrollmatrix von $\C$ eine Erzeugermatrix von $\C^\bot = \C$ sein.\medskip
 
-Wir haben bisher also gezeigt dass falls $\C$ ein Hamming-Code ist und falls $\C = \C^\bot$, dann muss $\C$ ein $[2n,n]$ Code sein, und die Erzeugermatrix von $\C$ muss auch eine Kontrollmatrix von $\C$ sein. Ausserdem muss $|\C| = q^n$ sein.
-Diese Bedingungen sind auch hinreichend:TODO
+Wir haben bisher also gezeigt dass falls $\C$ ein Hamming-Code ist und falls $\C = \C^\bot$, dann muss $\C$ ein $[2n,n]$ Code sein, und die Erzeugermatrix von $\C$ muss auch eine Kontrollmatrix von $\C$ sein. Ausserdem muss $|\C| = q^n$ sein.\medskip
 
-\begin{align*}
-	\C^\bot = \lbrace y \in K^{2n} | <y,x> = 0 \text{ für alle }x \in \C  \rbrace \\
-	x
-\end{align*}
+Aus $|\C| = q^n$ und der Tatsache dass die Erzeugermatrix von $\C$ eine $n \times 2n$ Matrix ist folgt aus Kardinalitätsgründen auch dass alle Zeilen der Erzeuger/Kontrollmatrix linear unabhängig sein müssen.
+
 #
-Konstruieren Sie für jede gerade natürliche Zahl $n$ einen selbstdualen binären linearen Code der Länge $n$.
+Konstruieren Sie für jede gerade natürliche Zahl $n$ einen selbstdualen binären linearen Code der Länge $n$.\medskip
 
-$(I_n|I_n)$ über Lemma X?
+Behauptung: für jede natürliche Zahl $n$ erzeugt die folgende Erzeugermatrix einen selbstdualen binären linearen Code der Länge n:
+\begin{equation*}
+	G = (I_{n/2} | I_{n/2})
+\end{equation*}
+Am Beispiel von $n = 12$ sieht $G$ also folgendermaßen aus:
+\begin{equation*}
+	G = 
+	\begin{pmatrix}
+	1 & 0 & 0 & 0 & 0 & 0 		& 1 & 0 & 0 & 0 & 0 & 0\\
+	0 & 1 & 0 & 0 & 0 & 0 		& 0 & 1 & 0 & 0 & 0 & 0\\
+	0 & 0 & 1 & 0 & 0 & 0 		& 0 & 0 & 1 & 0 & 0 & 0\\
+	0 & 0 & 0 & 1 & 0 & 0 		& 0 & 0 & 0 & 1 & 0 & 0\\
+	0 & 0 & 0 & 0 & 1 & 0 		& 0 & 0 & 0 & 0 & 1 & 0\\
+	0 & 0 & 0 & 0 & 0 & 1 		& 0 & 0 & 0 & 0 & 0 & 1
+	\end{pmatrix}
+\end{equation*}
+Wird zB das Infowort $i =(1,0,0,1,0,1)$ codiert so erhält man das Codewort $c = i \cdot G = (1,0,0,1,0,1,1,0,0,1,0,1)$. Und da $G$ auch Kontrollmatrix für $\C$ ist gilt $G \cdot (1,0,0,1,0,1,1,0,0,1,0,1)^t = 0$.\medskip
 
+Allgemein ist zu zeigen dass: $c \in \C \Leftrightarrow c \in \C^\bot$.
+Das gilt nach Lemma X, d) da G in Standardform ist und $G = (I_k|A) = (-A^t|I_k)$ für das angegebene $G$ trivialerweise erfüllt ist, $G$ also auch eine Erzeugermatrix des dualen Codes ist.
 \end{myList}
 \section*{Aufgabe 21}
 Sei $\C$ der binäre $[15,4]$-Simplex Code mit Erzeugermatrix
@@ -94,7 +109,7 @@ Sei $\C$ der binäre $[15,4]$-Simplex Code mit Erzeugermatrix
 #
 Zeigen Sie, dass $\C$ 3-Fehler-korrigierend ist.
 
-Da $\C$ Simplex-Code ist gilt dass für alle Codewörter $c\neq c'$ in $\C$ der Abstand konstant ist. Insbesondere gilt daher $d(\C) = wt(c)$ für ein beliebiges Codewort $c \in \C$.\medskip
+Da $\C$ Simplex-Code ist gilt dass für alle Codewörter $c\neq c'$ in $\C$ der Abstand konstant ist. Insbesondere gilt daher $d(\C) = wt(c)$ für ein beliebiges Codewort $c \neq 0 \in \C$.\medskip
 
 Aus der Erzeugermatrix kann daher direkt abgelesen werden dass $d(\C) = 8$.
 Daraus folgt direkt dass das maximale $t$ mit $2t+1 \leq d(\C) = 8$ genau 3 ist.
