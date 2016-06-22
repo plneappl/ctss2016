@@ -118,6 +118,64 @@ Bei der Übertragung eines Codeworts aus $\C$ seien maximal 3 Fehler aufgetreten
 \begin{equation*}
 	z = (0,1,1,1,1,0,0,0,0,0,1,1,1,1,1)
 \end{equation*}
-Entscheiden Sie mittels (einstufiger) Majority-Logic-Decodierung, ob an Position 4 ein Fehler aufgetreten ist.
+Entscheiden Sie mittels (einstufiger) Majority-Logic-Decodierung, ob an Position 4 ein Fehler aufgetreten ist.\medskip
+
+Da maximal 3 Fehler aufgetreten sind müssen wir 6 Vektoren aus $\C^\bot$ finden die orthogonal bezüglich der 4ten Position sind.\medskip
+
+Es gilt in Variation des Beweises von Lemma X:\\
+$(A |I_k)$ Erzeugermatrix von $\C \Rightarrow$ $(I_{n-k}|-A^t)$ Erzeugermatrix von $\C^\bot$.
+Beweis:
+\begin{equation*}
+	(I_{n-k}|-A^t) (A|I_k)^t = (I_{n-k}|-A^t)\left(\frac{A^t}{I_k}\right) = I_{n+k}A^t - A^tI_k = 0
+\end{equation*}\medskip
+
+Also ist die folgende Matrix Erzeugermatrix von $C^\bot$:
+\begin{equation*}
+	\begin{pmatrix}
+	1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &		1 & 1 & 0 & 0 \\
+	0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &		0 & 1 & 1 & 0 \\
+	0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &		0 & 0 & 1 & 1 \\
+	0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &		1 & 0 & 0 & 1 \\
+	0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 &		1 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 &		0 & 1 & 0 & 1 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 &		0 & 1 & 1 & 1 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 &		1 & 0 & 1 & 1 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 &		1 & 1 & 0 & 1 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 &		1 & 1 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 &		1 & 1 & 1 & 1 
+	\end{pmatrix}
+\end{equation*}
+Die Zeilen seien als $z_0$ bis $z_{10}$ bezeichnet, wir geben jetzt $v_0$ bis $v_5$ aus $\C^\bot$ an die orthogonal bzgl. der vierten Position sind:\\
+\begin{align*}
+	v_0 &= z_3 &= \begin{pmatrix}
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &		1 & 0 & 0 & 1
+		\end{pmatrix} \\
+	v_1 &= z_3 + z_7 &= \begin{pmatrix}
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 &		0 & 0 & 1 & 0
+		\end{pmatrix}\\
+	v_2 &= z_3 + z_8 &= \begin{pmatrix}
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 &		0 & 1 & 0 & 0
+		\end{pmatrix}\\
+	v_3 &= z_3 + z_1 + z_{10} &= \begin{pmatrix}
+		0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 &		0 & 0 & 0 & 0
+		\end{pmatrix}\\
+	v_4 &= z_3 + z_2 + z_4 &= \begin{pmatrix}
+		0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 &		0 & 0 & 0 & 0
+		\end{pmatrix}\\
+	v_5 &= z_3 + z_0 + z_5 &= \begin{pmatrix}
+		1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 &		0 & 0 & 0 & 0
+		\end{pmatrix}
+\end{align*}
+
+An Stelle 4 ist in $z$ ein Fehler aufgetreten $\Leftrightarrow |\lbrace j: <v_j,z> = 1\rbrace| > |\lbrace j:<v_j,z> = 0 \rbrace|$
+\begin{align*}
+	<v_0,z> &= 1 \\
+	<v_1,z> &= 0 \\
+	<v_2,z> &= 0 \\
+	<v_3,z> &= 1 \\
+	<v_4,z> &= 1 \\
+	<v_5,z> &= 1 
+\end{align*}
+Es ist also ein Fehler an Position 4 aufgetreten.
 \end{myList}
 \end{document}
