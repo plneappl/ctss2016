@@ -146,13 +146,13 @@ Wir wollen diejenigen $\C$ bestimmen für die gilt:
 \end{equation*}
 unter der Voraussetzung dass $\C$ Hamming-Code ist.\medskip
 
-Aus Lemma X folgt dass falls $\C$ ein $[n,k]$ Code ist, dann $\C^\bot$ ein $[n,n-k]$ Code ist. Da wir zeigen wollen dass $\C = \C^\bot$ muss also gelten dass $n$ gerade ist und $k = \frac{n}{2}$.
+Aus Lemma 3.24 folgt dass falls $\C$ ein $[n,k]$ Code ist, dann $\C^\bot$ ein $[n,n-k]$ Code ist. Da wir zeigen wollen dass $\C = \C^\bot$ muss also gelten dass $n$ gerade ist und $k = \frac{n}{2}$.
 Im folgenden seien also sowohl $\C$ als auch $\C^\bot$ $[2n, n]$ Codes.\medskip
 
 Aus der Tatsache dass $\C$ Hamming Code ist wissen wir dass:
 \begin{itemize}
 	\item $d(\C) = 3$
-	\item $\C$ ist Untervektorraum von $K^{2n}$, $dim(C) = n = 2n - l$ $\Rightarrow l = n$
+	\item $\C$ ist Untervektorraum von $K^{2n}$, $dim(\C) = n = 2n - l$ $\Rightarrow l = n$
 	\item $\C \subset K^{2n}$, $|K| = q$, $2n = \frac{q^n - 1}{q -1}$ ($q$ ist Primzahlpotenz)
 	\item $\C$ ist perfekt, i.e. $|\C| = \frac{q^{2n}}{\sum_{i=0}^1 \binom{2n}{i}(q -1)^i} =  \frac{q^{2n}}{ 1 + 2n(q -1)}$
 \end{itemize}\medskip
@@ -161,8 +161,8 @@ In der Gleichung $|\C| = \frac{q^{2n}}{1 + 2n(q-1)}$ können wir $2n$ im Nenner 
 
 Sowohl die Erzeugermatrix als auch die Kontrollmatrix von $\C$ muss eine $n \times 2n$-Matrix sein.
 Desweiteren muss die Erzeugermatrix von $\C$ immer auch eine Kontrollmatrix von $\C$ sein.
-Das folgt aus Lemma X welches behauptet dass die Erzeugermatrix von $\C$ eine Kontrollmatrix von $\C^\bot = \C$ ist. 
-Aus dem selben Grund muss Ausserdem jede Kontrollmatrix von $\C$ eine Erzeugermatrix von $\C^\bot = \C$ sein.\medskip
+Das folgt aus Lemma 3.24 welches behauptet dass die Erzeugermatrix von $\C$ eine Kontrollmatrix von $\C^\bot = \C$ ist. 
+Aus dem selben Grund muss ausserdem jede Kontrollmatrix von $\C$ eine Erzeugermatrix von $\C^\bot = \C$ sein.\medskip
 
 Wir haben bisher also gezeigt dass falls $\C$ ein Hamming-Code ist und falls $\C = \C^\bot$, dann muss $\C$ ein $[2n,n]$ Code sein, und die Erzeugermatrix von $\C$ muss auch eine Kontrollmatrix von $\C$ sein. Ausserdem muss $|\C| = q^n$ sein.\medskip
 
@@ -190,7 +190,7 @@ Am Beispiel von $n = 12$ sieht $G$ also folgendermaßen aus:
 Wird zB das Infowort $i =(1,0,0,1,0,1)$ codiert so erhält man das Codewort $c = i \cdot G = (1,0,0,1,0,1,1,0,0,1,0,1)$. Und da $G$ auch Kontrollmatrix für $\C$ ist gilt $G \cdot (1,0,0,1,0,1,1,0,0,1,0,1)^t = 0$.\medskip
 
 Allgemein ist zu zeigen dass: $c \in \C \Leftrightarrow c \in \C^\bot$.
-Das gilt nach Lemma X, d) da G in Standardform ist und $G = (I_k|A) = (-A^t|I_k)$ für das angegebene $G$ trivialerweise erfüllt ist, $G$ also auch eine Erzeugermatrix des dualen Codes ist.
+Das gilt nach Lemma 3.24, d) da G in Standardform ist und $G = (I_k|A) = (-A^t|I_k)$ für das angegebene $G$ trivialerweise erfüllt ist, $G$ also auch eine Erzeugermatrix des dualen Codes ist.
 \end{myList}
 \section*{Aufgabe 21}
 Sei $\C$ der binäre $[15,4]$-Simplex Code mit Erzeugermatrix
@@ -207,7 +207,7 @@ Sei $\C$ der binäre $[15,4]$-Simplex Code mit Erzeugermatrix
 #
 Zeigen Sie, dass $\C$ 3-Fehler-korrigierend ist.
 
-Da $\C$ Simplex-Code ist gilt dass für alle Codewörter $c\neq c'$ in $\C$ der Abstand konstant ist. Insbesondere gilt daher $d(\C) = wt(c)$ für ein beliebiges Codewort $c \neq 0 \in \C$.\medskip
+Da $\C$ Simplex-Code ist gilt dass für alle Codewörter $c\neq c'$ in $\C$ der Abstand konstant ist(Siehe 3.25). Insbesondere gilt daher $d(\C) = wt(c)$ für ein beliebiges Codewort $c \neq 0 \in \C$.\medskip
 
 Aus der Erzeugermatrix kann daher direkt abgelesen werden dass $d(\C) = 8$.
 Daraus folgt direkt dass das maximale $t$ mit $2t+1 \leq d(\C) = 8$ genau 3 ist.
@@ -220,11 +220,11 @@ Entscheiden Sie mittels (einstufiger) Majority-Logic-Decodierung, ob an Position
 
 Da maximal 3 Fehler aufgetreten sind müssen wir 6 Vektoren aus $\C^\bot$ finden die orthogonal bezüglich der 4ten Position sind.\medskip
 
-Es gilt in Variation des Beweises von Lemma X:\\
+Es gilt in Variation des Beweises von Lemma 3.24:\\
 $(A |I_k)$ Erzeugermatrix von $\C \Rightarrow$ $(I_{n-k}|-A^t)$ Erzeugermatrix von $\C^\bot$.
 Beweis:
 \begin{equation*}
-	(I_{n-k}|-A^t) (A|I_k)^t = (I_{n-k}|-A^t)\left(\frac{A^t}{I_k}\right) = I_{n+k}A^t - A^tI_k = 0
+	(I_{n-k}|-A^t) (A|I_k)^t = (I_{n-k}|-A^t)\left(\frac{A^t}{I_k}\right) = I_{n-k}A^t - A^tI_k = 0
 \end{equation*}\medskip
 
 Also ist die folgende Matrix Erzeugermatrix von $C^\bot$:
