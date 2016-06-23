@@ -9,10 +9,43 @@ Sei $y \in K^n \setminus \C$. Zeigen Sie:
 #
 Genau dann existiert ein $c \in \C$ mit $d(c,y)=1$, wenn $Hy^t = a \cdot s$ für ein $a \in K \setminus \lbrace 0 \rbrace$ und eine Spalte $s$ von $H$.\\
 Ist dabei $s$ die $i$-te Spalte von $H$, so gilt $d(c,y) = 1$ für $c = y -a\cdot e_i \in \C$, wobei $e_i$ der $i$-te kanonische Basisvektor des $K^n$ ist.
+## ''$\implies$'':\\
+Sei $y\in K^n\setminus\C$ und $c\in\C$ mit $d(c, y)=1$. Sei $i$ die Stelle von $c$ und $y$, an denen diese unterschiedlich sind. Dann gilt:
+$$c = y - a\cdot e_i$$
+mit $a = (y_i - c)^{-1}$ (das multiplikative Inverse von $y_i-c$).\\
+\begin{align*}
+& Hc^t = 0 = Hy^t - H(a\cdot e_i)^t\\
+\iff & Hy^t = H(a\cdot e_i)^t = a\cdot He_i^t = a\cdot\text{ die $i$-te Spalte von H}
+\end{align*}
+## ''$\seilpmi$'':\\
+Sei $y\in K^n\setminus\C$ mit $Hy^t = a\cdot s$ für ein $a\in K$ und die $i$-te Spalte $s$ von $H$. Dann gilt:
+\begin{align*}
+& Hy^t = a\cdot s = a\cdot He_i^t\\
+\iff & Hy^t - H(a\cdot e_i^t) = H(y^t - a\cdot e_i^t) = 0
+\end{align*}
+Das heißt aber, dass es einen Vektor $c'=y^t - a\cdot e_i^t$ gibt, sodass $Hc'=0$, und damit auch ein $c=c'^t$, sodass $Hc^t=0$. Dann muss aber gerade gelten, dass $c\in\C$.
+
+$d(y, c)=1$, da $c$ als Modifikation einer Zeile von $y$ entstanden ist.
 #
-Die Anzahl der Spalten von $H$, die ein von 0 verschiedenes Vielfaches von $Hy^t$ sind, ist gleich der Anzahl der Codewörter $c$ mit $d(c,y) = 1$.
+Die Anzahl der Spalten von $H$, die ein von 0 verschiedenes Vielfaches von $Hy^t$ sind, ist gleich der Anzahl der Codewörter $c$ mit $d(c,y) = 1$.\\\\
+Seien $c_1, \ldots, c_m\in\C$ paarweise verschieden mit $d(c_i, y) = 1$ für alle $i=1\ldots m$. Sei $e_i$ der Einheitsvektor aus $K^n$, sodass $c_i=y - a_i\cdot e_i$ für ein $a_i\in K$, und $s_i$ die zu $c_i$ gehörende $i'$-te Spalte aus $H$, sodass $Hy^t=a_i\cdot s_i$.
+
+Angenommen es gibt zwei $s_i, s_j$, sodass $i\not=j$ aber $i'=j'$. Dann ist auch $s_i=s_j, e_i=e_j$ und $a_i=a_j$. Außerdem ist $c_i + a_i\cdot e_i = y = c_j + a_j\cdot e_j$. Dann gilt:
+\begin{align*}
+&& y = c_i + a_i\cdot e_i &= c_j + a_j\cdot e_j\\
+\iff && c_i + a_i\cdot e_i &= c_j + a_i\cdot e_i\\
+\iff && c_i &= c_j
+\end{align*}
+Das ist aber ein Widerspruch zur Vorraussetzung, dass alle $c_i$ paarweise verschieden sind. Also folgt das zu Zeigende.
 #
-Entwickeln Sie unter Verwendung von a) ein schnelles Decodierverfahren für die Hamming-Codes.
+Entwickeln Sie unter Verwendung von a) ein schnelles Decodierverfahren für die Hamming-Codes.\\\\
+Da für jeden $[n, k]$-Hammingcode $\C$ mit $l\times n$ Kontrollmatrix $H$ über einem endlichen Körper $K$ gilt, dass $d(\C)=3$, gibt es für jedes $y\in K^n$ ein $c\in\C$, so dass $d(c, y)\leq 1$. Um also schnell zu Decodieren, berechne $b = H\,y^t$. 
+
+Ist $b=0$, so decodiere zu $y$, da $y\in\C$. 
+
+Sonst: Bestimme eine Spalte $s$ aus $H$, sodass $b$ ein Vielfaches von $s$ ist. Für jede Spalte $s'$ lässt sich in Zeit $O(l)$ entscheiden, ob es ein $a$ gibt, sodass $b=a\cdot s'$ ist, da multiplikative Inverse eindeutig sind. Um also eine solche Spalte zu bestimmen, benötigt man insgesamt Zeit $O(n\cdot l)$.
+
+Dann kann man zu $y - a\cdot e_i$ decodieren, mit $s$: $i$-te Spalte von $H$.
 \end{myList}
 \section*{Aufgabe 18}
 Sei $\C = \lbrace (x_1,x_2,x_3,x_4,x_5) \in \Z^5_7 : x_4 = 2x_1 + 4x_3, x_5 = x_1 + 2x_2 + 2x_3 \rbrace$
