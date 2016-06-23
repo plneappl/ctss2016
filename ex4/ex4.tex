@@ -26,7 +26,7 @@ Bestimmen Sie Erzeuger- und Kontrollmatrizen für $\C$ und $\C^\bot$.\\\\
   \end{pmatrix}
 \end{equation*}
 Dann gilt: 
-\begin{equation*}
+\begin{align*}
   \tuple{x_1, x_2, x_3} G\\
 = \tuple{x_1, x_2, x_3}
   \begin{pmatrix}
@@ -35,7 +35,7 @@ Dann gilt:
   0 & 0 & 1 & 4 & 2 
   \end{pmatrix}\\
 = \tuple{x_1, x_2, x_3, 2x_1+4x_3, x_1+2x_2+2x_3}
-\end{equation*}
+\end{align*}
 Da $G$ in Standardform ist, kann $H$ einfach aufgeschrieben werden:
 \begin{equation*}
   G^\bot = H = 
@@ -57,11 +57,49 @@ Sei $\C$ der $[7,4]$-Code über $\Z_3$ mit Erzeugermatrix
 \end{equation*}
 \begin{myList}
 #
-Zeigen Sie, dass $\C$ eine Erzeugermatrix in Standardform besitzt.
+Zeigen Sie, dass $\C$ eine Erzeugermatrix in Standardform besitzt.\\\\
+\begin{align*}
+G =&  \begin{pmatrix}
+  2 & 1 & 0 & 1 & 1 & 0 & 0 \\
+  2 & 1 & 0 & 2 & 0 & 2 & 0 \\
+  0 & 2 & 0 & 2 & 0 & 2 & 1 \\
+  0 & 1 & 1 & 1 & 0 & 2 & 0
+  \end{pmatrix} \lgsto{2\,\rom 1}{\rom 2}{2\,\rom 3}{\rom 4} && \begin{pmatrix}
+  1 & 2 & 0 & 2 & 2 & 0 & 0 \\
+  2 & 1 & 0 & 2 & 0 & 2 & 0 \\
+  0 & 1 & 0 & 1 & 0 & 1 & 2 \\
+  0 & 1 & 1 & 1 & 0 & 2 & 0
+  \end{pmatrix}\\
+\lgsto{\rom 1 + \rom 3}{\rom 1 + \rom 2}{\rom 3}{\rom 4}& \begin{pmatrix}
+  1 & 0 & 0 & 0 & 2 & 1 & 2 \\
+  0 & 0 & 0 & 1 & 2 & 2 & 0 \\
+  0 & 1 & 0 & 1 & 0 & 1 & 2 \\
+  0 & 1 & 1 & 1 & 0 & 2 & 0
+  \end{pmatrix} \lgsto{\rom 1}{\rom 3}{2\,\rom 3 + \rom 4}{\rom 2} && \begin{pmatrix}
+  1 & 0 & 0 & 0 & 2 & 1 & 2 \\
+  0 & 1 & 0 & 1 & 0 & 1 & 2 \\
+  0 & 0 & 1 & 0 & 0 & 1 & 1 \\
+  0 & 0 & 0 & 1 & 2 & 2 & 0 
+  \end{pmatrix}\\
+\lgsto{\rom 1}{\rom 2 + 2\,\rom 4}{\rom 3}{\rom 4}&\begin{pmatrix}
+  1 & 0 & 0 & 0 & 2 & 1 & 2 \\
+  0 & 1 & 0 & 0 & 1 & 2 & 2 \\
+  0 & 0 & 1 & 0 & 0 & 1 & 1 \\
+  0 & 0 & 0 & 1 & 2 & 2 & 0 
+  \end{pmatrix}\\
+\end{align*}
 #
-Bestimmen Sie eine Erzeugermatrix von $C^\bot$.
+Bestimmen Sie eine Erzeugermatrix von $C^\bot$.\\\\
+\begin{align*}
+G^\bot = H = \begin{pmatrix}
+  2 & 1 & 0 & 2 & 1 & 0 & 0 \\
+  1 & 2 & 1 & 2 & 0 & 1 & 0 \\
+  2 & 2 & 1 & 0 & 0 & 0 & 1
+  \end{pmatrix}\\
+\end{align*}
 #
-Bestimmen Sie $C \cap C^\bot$.
+Bestimmen Sie $C \cap C^\bot$.\\\\
+$C \cap C^\bot = \set{\tuple{0, 0, 0, 0, 0, 0, 0}}$ (berechnet mit Haskell: \url{https://goo.gl/EIMQ6I})
 \end{myList}
 \section*{Aufgabe 20}
 \begin{myList}
