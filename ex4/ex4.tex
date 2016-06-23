@@ -149,13 +149,11 @@ unter der Voraussetzung dass $\C$ Hamming-Code ist.\medskip
 Aus Lemma 3.24 folgt dass falls $\C$ ein $[n,k]$ Code ist, dann $\C^\bot$ ein $[n,n-k]$ Code ist. Da wir zeigen wollen dass $\C = \C^\bot$ muss also gelten dass $n$ gerade ist und $k = \frac{n}{2}$.
 Im folgenden seien also sowohl $\C$ als auch $\C^\bot$ $[2n, n]$ Codes.\medskip
 
-Aus der Tatsache dass $\C$ Hamming Code ist wissen wir dass:
-\begin{itemize}
-	\item $d(\C) = 3$
-	\item $\C$ ist Untervektorraum von $K^{2n}$, $dim(\C) = n = 2n - l$ $\Rightarrow l = n$
-	\item $\C \subset K^{2n}$, $|K| = q$, $2n = \frac{q^n - 1}{q -1}$ ($q$ ist Primzahlpotenz)
-	\item $\C$ ist perfekt, i.e. $|\C| = \frac{q^{2n}}{\sum_{i=0}^1 \binom{2n}{i}(q -1)^i} =  \frac{q^{2n}}{ 1 + 2n(q -1)}$
-\end{itemize}\medskip
+Aus der Tatsache dass $\C$ Hamming Code ist wissen wir dass:\\
+	- $d(\C) = 3$\\
+	- $\C$ ist Untervektorraum von $K^{2n}$, $dim(\C) = n = 2n - l$ $\Rightarrow l = n$\\
+	- $\C \subset K^{2n}$, $|K| = q$, $2n = \frac{q^n - 1}{q -1}$ ($q$ ist Primzahlpotenz)\\
+	- $\C$ ist perfekt, i.e. $|\C| = \frac{q^{2n}}{\sum_{i=0}^1 \binom{2n}{i}(q -1)^i} =  \frac{q^{2n}}{ 1 + 2n(q -1)}$\medskip
 
 In der Gleichung $|\C| = \frac{q^{2n}}{1 + 2n(q-1)}$ können wir $2n$ im Nenner durch $\frac{q^n -1}{q-1}$ ersetzen und erhalten $|\C| = q^n$.\medskip
 
@@ -166,7 +164,7 @@ Aus dem selben Grund muss ausserdem jede Kontrollmatrix von $\C$ eine Erzeugerma
 
 Wir haben bisher also gezeigt dass falls $\C$ ein Hamming-Code ist und falls $\C = \C^\bot$, dann muss $\C$ ein $[2n,n]$ Code sein, und die Erzeugermatrix von $\C$ muss auch eine Kontrollmatrix von $\C$ sein. Ausserdem muss $|\C| = q^n$ sein.\medskip
 
-Aus $|\C| = q^n$ und der Tatsache dass die Erzeugermatrix von $\C$ eine $n \times 2n$ Matrix ist folgt aus Kardinalitätsgründen auch dass alle Zeilen der Erzeuger/Kontrollmatrix linear unabhängig sein müssen.
+Um zu überprüfen ob ein gegebener Hamming-Code selbstdual ist reicht es also aus seine Kontrollmatrix mit der Erzeugermatrix zu vergleichen. Wenn beide Matrizen den selben Raum aufspannen so ist der Code selbstdual.
 
 #
 Konstruieren Sie für jede gerade natürliche Zahl $n$ einen selbstdualen binären linearen Code der Länge $n$.\medskip
