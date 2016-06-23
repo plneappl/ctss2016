@@ -16,7 +16,34 @@ Entwickeln Sie unter Verwendung von a) ein schnelles Decodierverfahren für die 
 \end{myList}
 \section*{Aufgabe 18}
 Sei $\C = \lbrace (x_1,x_2,x_3,x_4,x_5) \in \Z^5_7 : x_4 = 2x_1 + 4x_3, x_5 = x_1 + 2x_2 + 2x_3 \rbrace$
-Bestimmen Sie Erzeuger und Kontrollmatrizen für $\C$ und $\C^\bot$.
+Bestimmen Sie Erzeuger- und Kontrollmatrizen für $\C$ und $\C^\bot$.\\\\
+\begin{equation*}
+  H^\bot = G =
+  \begin{pmatrix}
+  1 & 0 & 0 & 2 & 1 \\
+  0 & 1 & 0 & 0 & 2 \\
+  0 & 0 & 1 & 4 & 2 
+  \end{pmatrix}
+\end{equation*}
+Dann gilt: 
+\begin{equation*}
+  \tuple{x_1, x_2, x_3} G\\
+= \tuple{x_1, x_2, x_3}
+  \begin{pmatrix}
+  1 & 0 & 0 & 2 & 1 \\
+  0 & 1 & 0 & 0 & 2 \\
+  0 & 0 & 1 & 4 & 2 
+  \end{pmatrix}\\
+= \tuple{x_1, x_2, x_3, 2x_1+4x_3, x_1+2x_2+2x_3}
+\end{equation*}
+Da $G$ in Standardform ist, kann $H$ einfach aufgeschrieben werden:
+\begin{equation*}
+  G^\bot = H = 
+  \begin{pmatrix}
+  2 & 0 & 4 & 1 & 0 \\
+  1 & 2 & 2 & 0 & 1 
+  \end{pmatrix}
+\end{equation*}
 \section*{Aufgabe 19}
 Sei $\C$ der $[7,4]$-Code über $\Z_3$ mit Erzeugermatrix
 \begin{equation*}
