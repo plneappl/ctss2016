@@ -1,0 +1,3 @@
+[submodule "ex5/MLD"]
+	path = ex5/MLD
+	url = https://github.com/plneappl/HaskellVectorsETC
