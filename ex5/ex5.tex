@@ -73,21 +73,87 @@ TODO
 \end{myList}
 
 \section*{Aufgabe 27}
-(David)
 \begin{myList}
 #
 Bestimmen Sie ein irreduzibles Polynom vom Grad 2 über $\Z_3$.\medskip
 
-TODO
+Die Menge der Polynome von Grad 1 über $\Z_3$ ist:
+$\lbrace x,x+1,x+2,2x,2x+1,2x+2 \rbrace$
 
+Die Menge der Polynome von Grad 2 über $\Z_3$ ist:
+$\lbrace
+x^2, x^2+1, x^2+2, x^2+x, x^2+x+1, x^2+x+2, x^2+2x, x^2+2x+1, x^2+2x+2,
+2x^2, 2x^2+1, 2x^2+2, 2x^2+x, 2x^2+x+1, 2x^2+x+2, 2x^2+2x, 2x^2+2x+1, 2x^2+2x+2
+\rbrace$\medskip
+
+Ein Polynom von Grad 2 über $\Z_3$ ist genau dann irreduzibel wenn es keine Nullstelle in $\Z_3$ hat.
+$h = x^2 + 1$ ist irreduzibel, da $0^2 + 1 = 2 \neq 0$, $1^2  + 1 = 2 \neq 0$ und $2^2 + 1 = 2 \neq 0$, $h$ also keine Nullstelle in $\Z_3$ hat.
 #
 Konstruieren Sie mit dem Polynom aus a) einen Körper $K$ der Ordnung 9 und geben Sie seine Multiplikationstafel an.\medskip
 
-TODO
+Betrachte $\Z_3[x]_2$, die Menge der Polynome über $\Z_3$ mit Grad $< 2$.
 
+Diese Menge ist $\lbrace 0,1,2, x, x+1 , x+2, 2x, 2x+1, 2x+2 \rbrace$ und hat damit die gewünschte Kardinalität.
+
+Die Addition $\oplus$ im Körper ist die normale Addition von Polynomen aus $\Z_3$.
+
+Die Multiplikation $\odot$ im Körper ist definiert als $a \odot b =_{Def} (a \cdot b) \mod h$, wobei $\cdot$ die normale Multiplikation von Polynomen aus $\Z_3$ ist und $h$ das irreduzible Polynom aus Teil a).\medskip
+
+Da der Körper 9 Elemente hat enthält die Multiplikationstabelle 81 Einträge.
+Es ist möglich die Multiplikationstabelle zu verkleinern indem man gewisse Elemente herausnimmt:
+
+Man kann die Elemente 0,1 und 2 herausnehmen, da die Multiplikation mit diesen Elementen den Grad des Polynoms nicht erhöht, und sich die Multiplikation $\odot$ identisch zu der normalen Multiplikation $\cdot$ verhält, da gilt: Grad($a) <$ Grad($h) \Rightarrow a \mod h = a$.
+
+
+Man kann desweiteren die Elemente $2x$ und $2x+2$ aus der Multiplikationstabelle entfernen, da die folgende Vereinfachung gilt (analog für $2x$):
+
+\begin{align*}
+	a \odot (2x + 2) &= a \odot (2\cdot (x+1)) \\
+	&= a \cdot (2 \cdot (x+1)) \mod h \\
+	&= (a \cdot (x+1)) \cdot 2 \mod h \\
+	&= (a \cdot (x+1)) \mod h \cdot 2\\
+	&= (a \odot (x+1)) \cdot 2\\
+\end{align*}
+
+Es muss also noch die folgende Multiplikationstabelle ausgefüllt werden (Die Tabelle ist natürlich symmetrisch zur Diagonalen).
+
+\begin{align*}
+	\begin{matrix}
+	\odot & x & x+1 & x+2 & 2x+1  \\
+	x & 2 & x+2 & 2x+2 & x+1   \\
+	x+1 & - & 2x & 1 & x   \\
+	x+2 & - & - & x & 2x   \\
+	2x+1 & - & - & - & x   \\
+	\end{matrix}
+\end{align*}
+\begin{align*}
+	(x \cdot x) \mod h 			&= x^2 \mod h 			&=&  2\\ 
+	(x \cdot (x+1)) \mod h 		&= x^2 + x \mod h 		&=& x+2\\
+	(x \cdot (x+2)) \mod h 		&= x^2 + 2x \mod h 		&=& 2x+2\\
+	(x \cdot (2x +1)) \mod h 	&= 2x^2 + x \mod h 		&=& x+1\\
+	((x+1)\cdot (x+1)) \mod h 	&= x^2 + 2x + 1 \mod h 	&=& 2x\\
+	((x+1)\cdot (x+2)) \mod h 	&= x^2 + 2 \mod h 		&=& 1\\
+	((x+1)\cdot (2x+1)) \mod h 	&= 2x^2 + x + 2 \mod h 	&=& x\\
+	((x+2)\cdot (x+2)) \mod h 	&= x^2 + x + 1 \mod h 	&=& x\\
+	((x+2)\cdot (2x+1)) \mod h 	&= 2x^2 + 2x + 2 \mod h 	&=& 2x\\
+	((2x+1)\cdot (2x+1)) \mod h 	&= x^2 + x + 1 \mod h 	&=& x\\
+\end{align*}
 #
 Bestimmen Sie ein Element, das die multiplikative Gruppe $K^{\ast}$ erzeugt.\medskip
 
-TODO
+Sei $\alpha = x+2$, dann gilt:
+\begin{align*}
+	\alpha^0 &= 1 \\
+	\alpha^1 &= x+2 \\
+	\alpha^2 &= x \\
+	\alpha^3 &= 2x+2 \\
+	\alpha^4 &= 2 \\
+	\alpha^5 &= 2x+1 \\
+	\alpha^6 &= 2x \\
+	\alpha^7 &= x+1 \\
+	(\alpha^8 &= 1) \\
+\end{align*}
+
+Und damit erzeugt $\alpha$ offensichtlich die multiplikative Gruppe $K^\ast = \Z_3[x]_2 \setminus \lbrace 0\rbrace$.
 \end{myList}
 \end{document}
