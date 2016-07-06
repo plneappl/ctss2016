@@ -34,7 +34,44 @@ Sei $m \in \N$. Zeigen Sie:
 	RM(m-1,m) = \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace
 \end{equation*}
 
-TODO
+\begin{itemize}
+	\item[IA:] yada yada
+	\item[IH:] Sei $c = \underline{f} \in RM(n-1,n)$, dann $wt(c)$ ist gerade.
+	\item[IS:] Sei $c = \underline{f} \in RM(n,n+1)$, zeige $wt(c)$ ist gerade.\\
+	$f$ kann auf folgende Weise dargestellt werden:\\
+	$f = g(x_0,\ldots,x_n) + x_{n+1}\cdot h(x_0,\ldots x_n)$\\
+	Dann setzt sich $\underline{f}$ wie in der folgenden Darstellung zusammen:\\
+	\begin{tabular}{|c|ccc|ccc|}
+	\hline 
+	g & $\cdots$ & $\underline{g}$ & $\cdots$ & $\cdots$ & $\underline{g}$ & $\cdots$ \\ 
+	\hline 
+	 &  & + &  &  & + &  \\ 
+	\hline 
+	$x_{n+1}$ & 1 & $\cdots$ & 1 & 0 & $\cdots$ & 0 \\ 
+	\hline 
+	h & $\cdots$ & $\underline{h}$ & $\cdots$ & $\cdots$ & $\underline{h}$ & $\cdots$ \\ 
+	\hline
+	\end{tabular}
+	
+	Wir zeigen jetzt durch Fallunterscheidungen dass das entstehende $\underline{f}$ immer ein gerades Gewicht hat.
+	\begin{itemize}
+		\item Fall 1: $h = 0 \Rightarrow f = g'(x_0, \ldots x_n,x_{n+1})$ ($g'$ ist die offensichtliche Erweiterung des Ursprungsbereiches von $g$).\\
+		Es ist klar dass $g'(\vec{x},0) = g'(\vec{x},1)$, und damit ist $wt(\underline{g'}) = wt(\underline{f})$ gerade.
+		\item Fall $2a$: $h \neq 0, g \neq 0$
+			\begin{itemize}
+			\item Fall $2a'$: $g + h = 0$\\
+			Damit $g + h = 0$ muss gelten $g = h$(Definition XOR), und da $wt(\underline{h})$ gerade ist nach IV ist damit auch $wt(\underline{g})$ gerade, und damit auch $wt(\underline{f})$.
+			\item Fall $2a''$:$g + h \neq 0$\\
+			Entweder stimmt $g$ mit $h$ an gerade oder ungerade vielen Stellen nicht überein.
+			Wenn $g$ mit $h$ an ungerade vielen Stellen nicht übereinstimmt, dann ist sowohl $wt(g+h)$ als auch $wt(g)$ ungerade, und damit $wt(f)$ gerade.
+			
+			Wenn $g$ mit $h$ an gerade vielen Stellen nicht übereinstimmt, dann ist sowohl $wt(g+h)$ als auch $wt(g)$ gerade, und damit $wt(f)$ gerade.
+			\end{itemize}
+		\item Fall 2b: $h \neq 0, g = 0\Rightarrow f = x_{n+1}\cdot h(x_0,\ldots,x_n)$
+		Grad$(h) \leq n-1$, also $wt(\underline{h})$ ist gerade nach IH.
+		Also ist $wt(\underline{f})$ gerade.
+	\end{itemize}
+\end{itemize}
 
 \section*{Aufgabe 25}
 (Simon)
