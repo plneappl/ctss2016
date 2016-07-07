@@ -3,22 +3,87 @@
 \setcounter{MaxMatrixCols}{20}
 \begin{document}
 \section*{Aufgabe 22}
-(David)
 \begin{myList}
 #
 Sei $m \in \N$. Geben Sie ein Verfahren an (nicht BruteForce!), wie man zu jedem $z \in \Z^{2^m}_2$ ein Bool'sches Polynom $f$ in $m$ Variablen $x_1,\ldots,x_m$ bestimmen kann mit $\underline{f} = z$. Begründen Sie, warum Ihr Verfahren funktioniert.\medskip
 
-TODO
+Es ist aus der Logik bekannt dass $\wedge,\vee,\neg$ eine funktional vollständige Menge von Junktoren bildet und dass zu jeder Bool'schen Funktion $f:\Z_2^m \rightarrow \Z_2$ eine konjunktive Normalform existiert.
+Diese Normalform kann direkt aus der Wahrheitstafel der Funktion abgelesen werden.\medskip
+
+Die für die Bool'schen Polynome verwendeten Operatoren $\cdot$ und $+$ entsprechen den logischen Junktoren $\wedge$ und $\veebar$(XOR).
+Durch Äquivalenzumformungen kann man jedes Vorkommen von $\vee$ und $\neg$ durch $\veebar$, 1 und $\wedge$ ausdrücken:
+\begin{align*}
+	\neg a &\equiv a \veebar 1 &=& a + 1 \\
+	a \vee b &\equiv (a\wedge b) \veebar a \veebar b &=& ab + b + a
+\end{align*}
+Der entstehende Term muss dann evtl noch ausmultipliziert und vereinfacht werden um zu der in der Vorlesung definierten Normalform zu kommen.
+(Wir wenden im folgenden das Verfahren nicht strikt an sondern nehmen zuerst einige Vereinfachungen vor um den Rechenaufwand in Grenzen zu halten. Das angegebene Verfahren spezifiziert aber trotzdem einen Algorithmus)
 
 #
 Wenden Sie ihr Verfahren auf $z = (1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0) \in \Z^{16}_{2}$ an.\medskip
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+$x_0$ & $x_1$ & $x_2$ & $x_3$ & z & Elementardisj. \\ 
+\midrule
+0 & 0 & 0 & 0 & 1 & - \\ 
+0 & 0 & 0 & 1 & 0 & $x_0 \vee x_1 \vee x_2 \vee \neg x_3 = v_1$ \\  
+0 & 0 & 1 & 0 & 1 & - \\ 
+0 & 0 & 1 & 1 & 0 & $x_0 \vee x_1 \vee \neg x_2 \vee \neg x_3 = v_2$ \\ 
+\midrule
+0 & 1 & 0 & 0 & 1 & - \\ 
+0 & 1 & 0 & 1 & 0 & $x_0 \vee \neg x_1 \vee x_2 \vee \neg x_3 = v_3$ \\ 
+0 & 1 & 1 & 0 & 0 & $x_0 \vee \neg x_1 \vee \neg x_2 \vee x_3 = v_4$ \\ 
+0 & 1 & 1 & 1 & 1 & - \\ 
+\midrule
+1 & 0 & 0 & 0 & 0 & $\neg x_0 \vee x_1 \vee x_2 \vee x_3 = v_5$ \\ 
+1 & 0 & 0 & 1 & 1 & - \\  
+1 & 0 & 1 & 0 & 0 & $\neg x_0 \vee x_1 \vee \neg x_2 \vee x_3 = v_6$ \\ 
+1 & 0 & 1 & 1 & 1 & - \\ 
+\midrule
+1 & 1 & 0 & 0 & 0 & $\neg x_0 \vee \neg x_1 \vee x_2 \vee x_3 = v_7$ \\ 
+1 & 1 & 0 & 1 & 1 & - \\ 
+1 & 1 & 1 & 0 & 1 & - \\ 
+1 & 1 & 1 & 1 & 0 & $\neg x_0 \vee \neg x_1 \vee \neg x_2 \vee \neg x_3 = v_8$ \\ 
+\bottomrule 
+\end{tabular} 
+\end{center}
 
-TODO
+Vereinfache Konjunktionen von je 2 Elementardisjunktionen:
+\begin{align*}
+	v_1 \wedge v_2 &\equiv x_0 \vee x_1 \vee \neg x_3  &= w_1\\
+	v_3 \wedge v_4 &\equiv x_0 \vee \neg x_1 \vee (\neg(x_2 \veebar x_3)) &= w_2\\
+	v_5 \wedge v_6 &\equiv \neg x_0 \vee x_1 \vee x_3 &= w_3\\
+	v_7 \wedge v_8 &\equiv \neg x_0 \vee \neg x_1 \vee (x_2 \veebar x_3) &= w_4
+\end{align*}
+
+Vereinfache je zwei von den $w_i$, löse auf und berechne die Polynome:
+\begin{align*}
+	w_1 \wedge w_2 &\equiv  x_0 \vee (\neg x_1 \wedge \neg x_3) \vee ( x_1 \wedge \neg(x_2 \veebar x_3)) \\
+	&\equiv \neg(\neg x_0 \wedge \neg(\neg x_1 \wedge \neg x_3) \wedge \neg(x_1 \wedge \neg (x_2 \veebar x_3)))\\
+	&= [(x_0+1)\, (((x_1+1)(x_3+1))+1)\, ((x_1(x_2+x_3+1))+1 )] +1 \\
+	&= [(x_0+1)\, (x_1x_3 + x_1 + x_3)(x_1x_2+x_1x_3+x_1+1)]+1 \\
+	&= [(x_0x_1x_3 + x_0x_1 + x_0x_3 + x_1x_3 + x_1 + x_3)(x_1x_2+x_1x_3+x_1+1)]+1 \\
+	&= x_0x_1x_2 + x_1x_2 + x_0x_3 +x_3 +1 = l_1 \\
+	w_3 \wedge w_4 &\equiv \neg x_0 \vee (\neg x_1 \wedge x_3) \vee (x_1 \wedge (x_2 \veebar x_3)) \\
+	&\equiv \neg(x_0 \wedge \neg(\neg x_1 \wedge x_3) \wedge \neg(x_1 \wedge (x_2 \veebar x_3))) \\
+	&= [x_0\, (((x_1+1)x_3)+1) \, ((x_1(x_2 +x_3))+1)] +1\\
+	&= [x_0\, (x_1x_3 +x_3 + 1) \, (x_1x_2 + x_1x_3 + 1) ] +1 \\
+	&= [(x_0x_1x_3 + x_0x_3 + x_0)\, (x_1x_2 + x_1x_3 + 1) ] +1 \\
+	&= x_0x_1x_2 + x_0x_3 + x_0 + 1 = l_2
+\end{align*}
+
+Berechne schließlich das Produkt von $l_1$ und $l_2$:
+\begin{align*}
+	l_1l_2 = x_0 + x_1x_2 + x_3 + 1
+\end{align*}
 
 #
 In welchen $RM(r,4)$, $0 < r < 4$ ist $z$ aus b enthalten?\medskip
 
-TODO
+$z$ ist in $RM(2,4),RM(3,4)$ und $RM(4,4)$ enthalten da das Polynom Grad 2 hat.
+Das angegebene Polynom ist auch das einzige Polynom in Normalform welches $z$ erzeugt.
+(i.e. Polynom besteht aus eindeutiger Auswahl aus den 16 Monomen von Grad $\leq 4$.)
 \end{myList}
 
 \section*{Aufgabe 23}
