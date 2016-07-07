@@ -61,14 +61,14 @@ Im nächsten Schritt ist die Dimension der UR 0, wir können nun also bestimmen,
 Quellcode für diese Aufgabe (ja, wir haben MLD implementiert): \url{https://github.com/plneappl/HaskellVectorsETC}
 
 \section*{Aufgabe 24}
-(David)
 Sei $m \in \N$. Zeigen Sie:
 \begin{equation*}
 	RM(m-1,m) = \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace
 \end{equation*}
 
+Zeige zunächst per Induktionsbeweis über $m$ dass $RM(m-1,m) \subseteq \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace$:
 \begin{itemize}
-	\item[IA:] yada yada
+	\item[IA:] Die einzigen Polynome von Grad $\leq 0$ in $RM(0,1)$ sind 0 und 1, und für 0 und 1 gilt die Aussage offensichtlich.
 	\item[IH:] Sei $c = \underline{f} \in RM(n-1,n)$, dann $wt(c)$ ist gerade.
 	\item[IS:] Sei $c = \underline{f} \in RM(n,n+1)$, zeige $wt(c)$ ist gerade.\\
 	$f$ kann auf folgende Weise dargestellt werden:\\
@@ -80,31 +80,28 @@ Sei $m \in \N$. Zeigen Sie:
 	\hline 
 	 &  & + &  &  & + &  \\ 
 	\hline 
-	$x_{n+1}$ & 1 & $\cdots$ & 1 & 0 & $\cdots$ & 0 \\ 
+	$x_{n+1}$ & 0 & $\cdots$ & 0 & 1 & $\cdots$ & 1 \\ 
 	\hline 
 	h & $\cdots$ & $\underline{h}$ & $\cdots$ & $\cdots$ & $\underline{h}$ & $\cdots$ \\ 
 	\hline
 	\end{tabular}
 	
-	Wir zeigen jetzt durch Fallunterscheidungen dass das entstehende $\underline{f}$ immer ein gerades Gewicht hat.
-	\begin{itemize}
-		\item Fall 1: $h = 0 \Rightarrow f = g'(x_0, \ldots x_n,x_{n+1})$ ($g'$ ist die offensichtliche Erweiterung des Ursprungsbereiches von $g$).\\
-		Es ist klar dass $g'(\vec{x},0) = g'(\vec{x},1)$, und damit ist $wt(\underline{g'}) = wt(\underline{f})$ gerade.
-		\item Fall $2a$: $h \neq 0, g \neq 0$
-			\begin{itemize}
-			\item Fall $2a'$: $g + h = 0$\\
-			Damit $g + h = 0$ muss gelten $g = h$(Definition XOR), und da $wt(\underline{h})$ gerade ist nach IV ist damit auch $wt(\underline{g})$ gerade, und damit auch $wt(\underline{f})$.
-			\item Fall $2a''$:$g + h \neq 0$\\
-			Entweder stimmt $g$ mit $h$ an gerade oder ungerade vielen Stellen nicht überein.
-			Wenn $g$ mit $h$ an ungerade vielen Stellen nicht übereinstimmt, dann ist sowohl $wt(g+h)$ als auch $wt(g)$ ungerade, und damit $wt(f)$ gerade.
-			
-			Wenn $g$ mit $h$ an gerade vielen Stellen nicht übereinstimmt, dann ist sowohl $wt(g+h)$ als auch $wt(g)$ gerade, und damit $wt(f)$ gerade.
-			\end{itemize}
-		\item Fall 2b: $h \neq 0, g = 0\Rightarrow f = x_{n+1}\cdot h(x_0,\ldots,x_n)$
-		Grad$(h) \leq n-1$, also $wt(\underline{h})$ ist gerade nach IH.
-		Also ist $wt(\underline{f})$ gerade.
-	\end{itemize}
+	$\underline{f}$ hat also die Form $(\underline{g}, \underline{g+h})$(falls $x_{n+1}$ Most significant Bit in der Anordnung der Vektoren aus $\Z_2^{n+1}$ ist, ansonsten entsprechend permutiert).\medskip
+	
+	$h(x_0,\ldots,x_n)$ muss einen Grad $\leq n-1$ haben, und hat damit nach IH ein gerades Gewicht.\medskip
+	
+	Unterscheide jetzt die beiden Fälle dass $wt(\underline{g})$ gerade oder ungerade ist.
+	Ist $wt(\underline{g})$ gerade, so ist auch $wt(\underline{g+h})$ gerade, und damit auch $wt(\underline{f})$ gerade.
+	Ist $wt(\underline{g})$ ungerade, so ist auch $wt(\underline{g+h})$ ungerade, und damit aber $wt(\underline{f})$ gerade.
+	(Die Implikationen ergeben sich aus der Tatsache dass $wt(\underline{g + h}) = wt(\underline{g}) + wt(\underline{h}) - 2 \cdot i$ wobei $i$ die Anzahl der Stellen ist an denen beide Vektoren $1$ sind.
 \end{itemize}
+
+Zeige nun $\lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace \subseteq RM(m-1,m)$:
+
+$M = \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade }\rbrace$ ist ein $m-1$ dimensionaler Unterraum des $\Z_2^{2^m}$.
+(Abschlusseigenschaften sind offensichtlich, Dimension ergibt sich aus der Kardinalität).
+Damit gilt nach Satz 4.15: $\chi_M \in RM(r,m)$.
+
 
 \section*{Aufgabe 25}
 \begin{myList}
