@@ -22,10 +22,43 @@ TODO
 \end{myList}
 
 \section*{Aufgabe 23}
-(Simon)
 Bei der Übertragung eines Wortes aus $RM(1,3)$ sei maximal ein Fehler aufgetreten und $(1,0,1,1,1,0,0,1)$ wurde empfangen. Bestimmen Sie das gesendete Wort mit Majority-Logic-Decodierung.\medskip
 
-TODO
+Für jeden 1-dim. UR $M^i$ von $\Z_2^3$ bestimmen wir 2 2-dim. UR $M^i_1, M^i_2$, die sich in $M^i$ schneiden. Dabei geben wir jeweils nur eine Erzeugerbasis an:
+\begin{align*}
+z=(1,0,1,1,1,0,0,1)\\
+M^1&=<(1, 0, 0)>&M^2&=<(0, 1, 0)>\\
+M^3&=<(1, 1, 0)>&M^4&=<(0, 0, 1)>\\
+M^5&=<(1, 0, 1)>&M^6&=<(0, 1, 1)>\\
+M^7&=<(1, 1, 1)>\\\\
+M^1_1&=<(1, 0, 0), (0, 1, 0)>&M^1_2&=<(1, 0, 0), (0, 0, 1)>\\
+M^2_1&=<(1, 0, 0), (0, 1, 0)>&M^2_2&=<(0, 1, 0), (0, 0, 1)>\\
+M^3_1&=<(1, 0, 0), (0, 1, 0)>&M^3_2&=<(1, 1, 0), (0, 0, 1)>\\
+M^4_1&=<(1, 0, 0), (0, 0, 1)>&M^4_2&=<(0, 1, 0), (0, 0, 1)>\\
+M^5_1&=<(1, 0, 0), (0, 0, 1)>&M^5_2&=<(0, 1, 0), (1, 0, 1)>\\
+M^6_1&=<(1, 0, 0), (0, 1, 1)>&M^6_2&=<(0, 1, 0), (0, 0, 1)>\\
+M^7_1&=<(1, 0, 0), (0, 1, 1)>&M^7_2&=<(0, 1, 0), (1, 0, 1)>\\\\
+\chi_{M^1_1}&=(1, 1, 1, 1, 0, 0, 0, 0)&\chi_{M^1_2}&=(1, 1, 0, 0, 1, 1, 0, 0)\\
+\chi_{M^2_1}&=(1, 1, 1, 1, 0, 0, 0, 0)&\chi_{M^2_2}&=(1, 0, 1, 0, 1, 0, 1, 0)\\
+\chi_{M^3_1}&=(1, 1, 1, 1, 0, 0, 0, 0)&\chi_{M^3_2}&=(1, 0, 0, 1, 1, 0, 0, 1)\\
+\chi_{M^4_1}&=(1, 1, 0, 0, 1, 1, 0, 0)&\chi_{M^4_2}&=(1, 0, 1, 0, 1, 0, 1, 0)\\
+\chi_{M^5_1}&=(1, 1, 0, 0, 1, 1, 0, 0)&\chi_{M^5_2}&=(1, 0, 1, 0, 0, 1, 0, 1)\\
+\chi_{M^6_1}&=(1, 1, 0, 0, 0, 0, 1, 1)&\chi_{M^6_2}&=(1, 0, 1, 0, 1, 0, 1, 0)\\
+\chi_{M^7_1}&=(1, 1, 0, 0, 0, 0, 1, 1)&\chi_{M^7_2}&=(1, 0, 1, 0, 0, 1, 0, 1)\\\\
+\end{align*}
+\begin{align*}
+k^i_j&=\chi^i_j\cdot z\\\\
+k^1_1&=1&k^1_2=0\\
+k^2_1&=1&k^2_2=1\\
+k^3_1&=1&k^3_2=0\\
+k^4_1&=0&k^4_2=1\\
+k^5_1&=0&k^5_2=1\\
+k^6_1&=0&k^6_2=1\\
+k^7_1&=0&k^7_2=1\\
+\end{align*}
+Jetzt können wir bestimmen, ob an den Stellen $(0, i)$ eine (un)gerade Anzahl Fehler aufgetreten ist, für $i=1\ldots 7$. Nur an Stellen $(0, 2)$ ist eine ungerade Anzahl Fehler aufgetreten, an den restlichen Stellenpaaren eine gerade Anzahl.\\
+Im nächsten Schritt ist die Dimension der UR 0, wir können nun also bestimmen, ob an Stelle 0 eine (un)gerade Anzahl Fehler aufgetreten ist: Sie ist gerade, da nicht die Mehrzahl der Fehler an $(0, i)$ ungerade ist. Also ist an allen Stellen außer an Stelle 2 kein Fehler aufgetreten. Damit decodieren wir $z$ zu $$y = (1, 0, 0, 1, 1, 0, 0, 1)$$
+Quellcode für diese Aufgabe (ja, wir haben MLD implementiert): \url{https://github.com/plneappl/HaskellVectorsETC}
 
 \section*{Aufgabe 24}
 (David)
@@ -74,7 +107,6 @@ Sei $m \in \N$. Zeigen Sie:
 \end{itemize}
 
 \section*{Aufgabe 25}
-(Simon)
 \begin{myList}
 #
 Seien $\C_1$ und $\C_2$ zwei lineare Codes in $K^n$, $K$ endlicher Körper, mit $dim(\C_i) = k_i$, $i = 1,2$.\\
@@ -98,8 +130,9 @@ k\cdot x \in \C_1 \propto \C_2 \iff k x_1\in\C_1, k x_2\in\C_2
 \intertext{Da $\C_1$ und $\C_2$ linear sind, gilt:}
 k\cdot x \in \C_1 \propto \C_2
 \end{align*}
-Da gezeigt wurde, dass $\C_1 \propto \C_2$ nicht-leer und abgeschlossen bezüglich Vektoraddition und Skalarmultiplikation ist, ist $\C_1 \propto \C_2$ ein linearer Code.
-## $\dim(\C_1 \propto \C_2) = k_1+k_2$:\\
+\ListProperties(Hide3=3)
+### Da gezeigt wurde, dass $\C_1 \propto \C_2$ nicht-leer und abgeschlossen bezüglich Vektoraddition und Skalarmultiplikation ist, ist $\C_1 \propto \C_2$ ein linearer Code. \ListProperties(Hide3=2)
+## $\dim(\C_1 \propto \C_2) = k_1+k_2$:\medskip\\
 Seien
 \begin{align*}
 \C'_1&=\set{(c, c) | c\in\C_1}~~\subseteq K^{2n}\\
@@ -116,26 +149,87 @@ Seien
 \end{align*}
 #
 Geben Sie ein Beispiel zweier zyklischer Codes $\C_1$ und $\C_2$ gleicher Länge an, sodass $C_1 \propto \C_2$ nicht zyklisch ist.\medskip
-Seien $n = 2,\C_1=\set{(00)}$ und sei $\C_2=\set{(00), (11)}$ der $n$-fache Wiederholungscode. $\C_1 \propto \C_2=\set{(0000), x=(0011)}$. $\sigma(x)=(1001)\not\in\C_1 \propto \C_2$. 
+
+Seien $n = 2,\C_1=\set{(00)}$ und sei $\C_2=\set{(00), (11)}$ der $n$-fache Wiederholungscode. $\C_1 \propto \C_2=\set{(0000), x=(0011)}$. $\sigma(x)=(1001)\not\in\C_1 \propto \C_2$, also ist $\C_1 \propto \C_2$ nicht zyklisch. 
 
 #
-Sei $m \in \N$ und $\mathcal{W}_{2^m}$ der $2^m$-fache binäre Wiederholungscode. Zeigen Sie, dass $RM(1,m) \propto \mathcal{W}_{2^m} = RM(1,m+1)$.\medskip
+Sei $m \in \N$ und $\mathcal{W}_{2^m}=\set{\mathbf 0, \mathbf 1}$ der $2^m$-fache binäre Wiederholungscode. Zeigen Sie, dass $M_1:=RM(1,m) \propto \mathcal{W}_{2^m} = RM(1,m+1)=:M_2$.\medskip
+\begin{align*}
+RM(1,m) \propto \mathcal{W}_{2^m} &= \set{(c_1, c_1 + c_2) | c_1\in RM(1, m), c_2\in\mathcal{W}_{2^m}}\\
+&=\set{(c, c + \mathbf 0) | c\in RM(1, m)} \dot\cup \set{(c, c + \mathbf 1) | c\in RM(1, m)}\\
+&=\set{(c, c) | c\in RM(1, m)} \dot\cup \set{(c, c + \mathbf 1) | c\in RM(1, m)}
+\end{align*}
+## $M_1\subseteq M_2$:\medskip
 
-TODO
+Sei $\underline f\in RM(1, m)$ beliebig, $f:\Z_2^m\to\Z_2, \grad(f)\leq 1$. Zu zeigen: $(\underline f, \underline f)\in RM(1, m+1)$ und $(\underline f, \underline f + \mathbf 1)\in RM(1, m+1)$.
+### $(\underline f, \underline f)\in RM(1, m+1)$:\medskip
+\begin{align*}
+\text{Sei }& f':\Z_2^{m+1}\to\Z_2, (x_1,\ldots, x_m, x_{m+1})\mapsto f(x_1, \ldots, x_m)\\
+&\grad(f')=\grad(f)\leq 1\\
+\underline{f'}&=(\underline{f'(x_1,\ldots, x_m, 0)}, \underline{f'(x_1,\ldots, x_m, 1)}) \\
+&= (\underline f, \underline f)~~ \grad(f')=\grad(f)\leq 1
+\intertext{Also gilt: }
+(\underline f, \underline f) &= \underline{f'}\in RM(1, m+1)
+\end{align*}
+### $(\underline f, \underline f + \mathbf 1)\in RM(1, m+1)$:\medskip
+\begin{align*}
+\text{Sei }& f':\Z_2^{m+1}\to\Z_2, (x_1,\ldots, x_m, x_{m+1})\mapsto x_{m+1} + f(x_1, \ldots, x_m)\\
+&\grad(f')=\max(1, \grad(f))=1\\
+\underline{f'}&=(\underline{f'(x_1,\ldots, x_m, 0)}, \underline{f'(x_1,\ldots, x_m, 1)}) \\
+\underline{f'}&=(\underline{0 + f(x_1, \ldots, x_m)}, \underline{1 + f(x_1, \ldots, x_m)}) \\
+&= (\underline f, \underline f + \mathbf 1)
+\intertext{Also gilt: }
+(\underline f, \underline f + \mathbf 1) &= \underline{f'}\in RM(1, m+1)
+\end{align*}
+## $M_2\subseteq M_1$:\medskip
+
+Sei $\underline f\in RM(1, m+1)$, $f:\Z_2^{m+1}\to\Z_2, \grad(f)\leq 1$, $(x_1\ldots, x_m, x_{m+1})\mapsto f(x_1\ldots, x_m, x_{m+1})$. Da der Grad von $f$ kleiner gleich 1 ist, kann jede Variable nur alleine im Polynom auftreten, insbesondere $x_{m+1}$. Doppelte Vorkommen einer Variablen $x_i$ können eliminiert werden, ohne die Abbildung zu ändern: taucht $x_i$ $2k$-mal auf, können wir $x_i$ komplett weglassen (da $x_i + x_i = 0$), taucht $x_i$ $2k+1$-mal auf, können wir $2k$ Vorkommen weglassen (da $x_i+x_i+x_i=x_i$). Wir nehmen also an, dass jede Variable in $f$ höchstens einmal vorkommt. Dann hat $f(x_1\ldots, x_m, x_{m+1})$ eine der folgenden Formen:
+### $f(x_1\ldots, x_m, x_{m+1}) = g(x_1\ldots, x_m)$
+### $f(x_1\ldots, x_m, x_{m+1}) = x_{m+1} + g(x_1\ldots, x_m)$
+\ListProperties(Hide=10000)
+## Mit $g:\Z_2^m\to\Z_2, \grad(g)\leq 1$. Dann ist also $g\in RM(1, m)$.\\
+Im ersten Fall ist $\underline f$ gerade $(\underline{g}, \underline{g})\in M_1$. Im zweiten Fall ist $\underline{f} = (\underline g, \underline g + \mathbf 1) \in M_1$.
+# Da beidseitige Inklusion gezeigt wurde, muss gelten: $M_1=M_2$.
 \end{myList}
 
 \section*{Aufgabe 26}
-(Simon)
 \begin{myList}
 #
-Bestimmen Sie alle $\alpha \in \Z_{13}$, die die multiplikative Gruppe $\Z_{13}^{\ast}$ erzeugen, d.h. $\Z_{13}^{\ast} = \lbrace \alpha^0 = 1,\alpha,\ldots,\alpha^{11} \rbrace$.
-\medskip
+Bestimmen Sie alle $\alpha \in \Z_{13}$, die die multiplikative Gruppe $\Z_{13}^*$ erzeugen, d.h. $\Z_{13}^* = \lbrace \alpha^0 = 1,\alpha,\ldots,\alpha^{11} \rbrace$.\medskip
 
-TODO
+Der folgende Code testet alle $x\in[1..12]$, ob sie ein Kandidat für $\alpha$ sind, und gibt sie als Liste zurück:\\
+\begin{lstlisting}
+map fst $ 
+  filter ((== 12) . snd) $ 
+  zipWith (,) [1..12] $ 
+  map length $
+  map nub $ 
+  map (\x -> map (\y -> (x ^ y) `mod` 13) [0..12]) [1..12]}
+\end{lstlisting}
+Sein Output ist: \lstinline{[2,6,7,11]}.
 #
 Geben Sie explizit eine Erzeugermatrix und eine Kontrollmatrix für den Reed-Solomon-Code $RS_{13}(5)$ an.\medskip
 
-TODO
+$q = 13, n = q - 1 = 12, d = 5, n - d = 7$. $\alpha=2$, $M = (\alpha^0, \alpha^1, \ldots, \alpha^{q-2})=(1, 2, 4, 8, 3, 6, 12, 11, 9, 5, 10, 7)$
+## Erzeugermatrix:
+$$G = \begin{pmatrix}
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+1 & 2 & 4 & 8 & 3 & 6 & 12 & 11 & 9 & 5 & 10 & 7\\
+1 & 4 & 3 & 12 & 9 & 10 & 1 & 4 & 3 & 12 & 9 & 10\\
+1 & 8 & 12 & 5 & 1 & 8 & 12 & 5 & 1 & 8 & 12 & 5\\
+1 & 3 & 9 & 1 & 3 & 9 & 1 & 3 & 9 & 1 & 3 & 9\\
+1 & 6 & 10 & 8 & 9 & 2 & 12 & 7 & 3 & 5 & 4 & 11\\
+1 & 12 & 1 & 12 & 1 & 12 & 1 & 12 & 1 & 12 & 1 & 12\\
+1 & 11 & 4 & 5 & 3 & 7 & 12 & 2 & 9 & 8 & 10 & 6
+\end{pmatrix}$$
+## Kontrollmatrix:
+$$H = \begin{pmatrix}
+1 & 2 & 4 & 8 & 3 & 6 & 12 & 11 & 9 & 5 & 10 & 7\\
+1 & 4 & 3 & 12 & 9 & 10 & 1 & 4 & 3 & 12 & 9 & 10\\
+1 & 8 & 12 & 5 & 1 & 8 & 12 & 5 & 1 & 8 & 12 & 5\\
+1 & 3 & 9 & 1 & 3 & 9 & 1 & 3 & 9 & 1 & 3 & 9%\\
+%1 & 6 & 10 & 8 & 9 & 2 & 12 & 7 & 3 & 5 & 4 & 11
+\end{pmatrix}$$
 \end{myList}
 
 \section*{Aufgabe 27}

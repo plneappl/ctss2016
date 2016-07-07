@@ -16,7 +16,7 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{extarrows}
-\usepackage{listings} \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt} \lstset{language=R}
+\usepackage{listings} \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt} \lstset{language=Haskell}
 \usepackage{stmaryrd}
 %Felix: There is a conflict between mathtools and xfraf whem I'm compiling the
 % document.
@@ -124,9 +124,11 @@
 }
 \newcommand{\firstline}[1]{\splitstring{#1}{\\}}
 
+\newcommand{\listSettings}{\ListProperties(Numbers1=l, Mark1={)}, Style1*=\bfseries\large, Numbers2=a, Numbers3=R, Numbers4=r, Hide3=2, Mark2=., Style2*={}, Progressive=1em)}
+
 \newcommand{\autobox}[1]{\parbox{\widthof{\firstline{#1}}}{#1}}
 \newenvironment{myList}{
-  \begin{easylist}[enumerate]\ListProperties(Numbers1=l, Mark1={)}, Style1*=\bfseries\large, Numbers2=a, Numbers3=R, Numbers4=r, Hide3=2, Mark2=., Style2*={}, Progressive=1em)
+  \begin{easylist}[enumerate]\listSettings
 }{\end{easylist}}
 
 \newcommand*{\independent}{\ensuremath{\bot\hspace{-0.5em}\bot}}
