@@ -26,7 +26,7 @@ Bei der Übertragung eines Wortes aus $RM(1,3)$ sei maximal ein Fehler aufgetret
 
 Für jeden 1-dim. UR $M^i$ von $\Z_2^3$ bestimmen wir 2 2-dim. UR $M^i_1, M^i_2$, die sich in $M^i$ schneiden. Dabei geben wir jeweils nur eine Erzeugerbasis an:
 \begin{align*}
-z=(1,0,1,1,1,0,0,1)\\
+z&=(1,0,1,1,1,0,0,1)\\
 M^1&=<(1, 0, 0)>&M^2&=<(0, 1, 0)>\\
 M^3&=<(1, 1, 0)>&M^4&=<(0, 0, 1)>\\
 M^5&=<(1, 0, 1)>&M^6&=<(0, 1, 1)>\\
@@ -57,7 +57,7 @@ k^6_1&=0&k^6_2=1\\
 k^7_1&=0&k^7_2=1\\
 \end{align*}
 Jetzt können wir bestimmen, ob an den Stellen $(0, i)$ eine (un)gerade Anzahl Fehler aufgetreten ist, für $i=1\ldots 7$. Nur an Stellen $(0, 2)$ ist eine ungerade Anzahl Fehler aufgetreten, an den restlichen Stellenpaaren eine gerade Anzahl.\\
-Im nächsten Schritt ist die Dimension der UR 0, wir können nun also bestimmen, ob an Stelle 0 eine (un)gerade Anzahl Fehler aufgetreten ist: Sie ist gerade, da nicht die Mehrzahl der Fehler an $(0, i)$ ungerade ist. Also ist an allen Stellen außer an Stelle 2 kein Fehler aufgetreten. Damit decodieren wir $z$ zu $$y = (1, 0, 0, 1, 1, 0, 0, 1)$$
+Im nächsten Schritt ist die Dimension der UR 0, wir können nun also bestimmen, ob an Stelle 0 eine (un)gerade Anzahl Fehler aufgetreten ist: Sie ist gerade, da nicht die Mehrzahl der Fehler an $(0, i)$ ungerade ist. Also ist an allen Stellen außer an Stelle 2 kein Fehler aufgetreten. Wir können bis zu einen Fehler korrigieren, also decodieren wir $z$ zu $$y = (1, 0, 0, 1, 1, 0, 0, 1)$$
 Quellcode für diese Aufgabe (ja, wir haben MLD implementiert): \url{https://github.com/plneappl/HaskellVectorsETC}
 
 \section*{Aufgabe 24}
