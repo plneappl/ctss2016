@@ -34,7 +34,44 @@ Sei $m \in \N$. Zeigen Sie:
 	RM(m-1,m) = \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace
 \end{equation*}
 
-TODO
+\begin{itemize}
+	\item[IA:] yada yada
+	\item[IH:] Sei $c = \underline{f} \in RM(n-1,n)$, dann $wt(c)$ ist gerade.
+	\item[IS:] Sei $c = \underline{f} \in RM(n,n+1)$, zeige $wt(c)$ ist gerade.\\
+	$f$ kann auf folgende Weise dargestellt werden:\\
+	$f = g(x_0,\ldots,x_n) + x_{n+1}\cdot h(x_0,\ldots x_n)$\\
+	Dann setzt sich $\underline{f}$ wie in der folgenden Darstellung zusammen:\\
+	\begin{tabular}{|c|ccc|ccc|}
+	\hline 
+	g & $\cdots$ & $\underline{g}$ & $\cdots$ & $\cdots$ & $\underline{g}$ & $\cdots$ \\ 
+	\hline 
+	 &  & + &  &  & + &  \\ 
+	\hline 
+	$x_{n+1}$ & 1 & $\cdots$ & 1 & 0 & $\cdots$ & 0 \\ 
+	\hline 
+	h & $\cdots$ & $\underline{h}$ & $\cdots$ & $\cdots$ & $\underline{h}$ & $\cdots$ \\ 
+	\hline
+	\end{tabular}
+	
+	Wir zeigen jetzt durch Fallunterscheidungen dass das entstehende $\underline{f}$ immer ein gerades Gewicht hat.
+	\begin{itemize}
+		\item Fall 1: $h = 0 \Rightarrow f = g'(x_0, \ldots x_n,x_{n+1})$ ($g'$ ist die offensichtliche Erweiterung des Ursprungsbereiches von $g$).\\
+		Es ist klar dass $g'(\vec{x},0) = g'(\vec{x},1)$, und damit ist $wt(\underline{g'}) = wt(\underline{f})$ gerade.
+		\item Fall $2a$: $h \neq 0, g \neq 0$
+			\begin{itemize}
+			\item Fall $2a'$: $g + h = 0$\\
+			Damit $g + h = 0$ muss gelten $g = h$(Definition XOR), und da $wt(\underline{h})$ gerade ist nach IV ist damit auch $wt(\underline{g})$ gerade, und damit auch $wt(\underline{f})$.
+			\item Fall $2a''$:$g + h \neq 0$\\
+			Entweder stimmt $g$ mit $h$ an gerade oder ungerade vielen Stellen nicht überein.
+			Wenn $g$ mit $h$ an ungerade vielen Stellen nicht übereinstimmt, dann ist sowohl $wt(g+h)$ als auch $wt(g)$ ungerade, und damit $wt(f)$ gerade.
+			
+			Wenn $g$ mit $h$ an gerade vielen Stellen nicht übereinstimmt, dann ist sowohl $wt(g+h)$ als auch $wt(g)$ gerade, und damit $wt(f)$ gerade.
+			\end{itemize}
+		\item Fall 2b: $h \neq 0, g = 0\Rightarrow f = x_{n+1}\cdot h(x_0,\ldots,x_n)$
+		Grad$(h) \leq n-1$, also $wt(\underline{h})$ ist gerade nach IH.
+		Also ist $wt(\underline{f})$ gerade.
+	\end{itemize}
+\end{itemize}
 
 \section*{Aufgabe 25}
 (Simon)
@@ -73,21 +110,87 @@ TODO
 \end{myList}
 
 \section*{Aufgabe 27}
-(David)
 \begin{myList}
 #
 Bestimmen Sie ein irreduzibles Polynom vom Grad 2 über $\Z_3$.\medskip
 
-TODO
+Die Menge der Polynome von Grad 1 über $\Z_3$ ist:
+$\lbrace x,x+1,x+2,2x,2x+1,2x+2 \rbrace$
 
+Die Menge der Polynome von Grad 2 über $\Z_3$ ist:
+$\lbrace
+x^2, x^2+1, x^2+2, x^2+x, x^2+x+1, x^2+x+2, x^2+2x, x^2+2x+1, x^2+2x+2,
+2x^2, 2x^2+1, 2x^2+2, 2x^2+x, 2x^2+x+1, 2x^2+x+2, 2x^2+2x, 2x^2+2x+1, 2x^2+2x+2
+\rbrace$\medskip
+
+Ein Polynom von Grad 2 über $\Z_3$ ist genau dann irreduzibel wenn es keine Nullstelle in $\Z_3$ hat.
+$h = x^2 + 1$ ist irreduzibel, da $0^2 + 1 = 2 \neq 0$, $1^2  + 1 = 2 \neq 0$ und $2^2 + 1 = 2 \neq 0$, $h$ also keine Nullstelle in $\Z_3$ hat.
 #
 Konstruieren Sie mit dem Polynom aus a) einen Körper $K$ der Ordnung 9 und geben Sie seine Multiplikationstafel an.\medskip
 
-TODO
+Betrachte $\Z_3[x]_2$, die Menge der Polynome über $\Z_3$ mit Grad $< 2$.
 
+Diese Menge ist $\lbrace 0,1,2, x, x+1 , x+2, 2x, 2x+1, 2x+2 \rbrace$ und hat damit die gewünschte Kardinalität.
+
+Die Addition $\oplus$ im Körper ist die normale Addition von Polynomen aus $\Z_3$.
+
+Die Multiplikation $\odot$ im Körper ist definiert als $a \odot b =_{Def} (a \cdot b) \mod h$, wobei $\cdot$ die normale Multiplikation von Polynomen aus $\Z_3$ ist und $h$ das irreduzible Polynom aus Teil a).\medskip
+
+Da der Körper 9 Elemente hat enthält die Multiplikationstabelle 81 Einträge.
+Es ist möglich die Multiplikationstabelle zu verkleinern indem man gewisse Elemente herausnimmt:
+
+Man kann die Elemente 0,1 und 2 herausnehmen, da die Multiplikation mit diesen Elementen den Grad des Polynoms nicht erhöht, und sich die Multiplikation $\odot$ identisch zu der normalen Multiplikation $\cdot$ verhält, da gilt: Grad($a) <$ Grad($h) \Rightarrow a \mod h = a$.
+
+
+Man kann desweiteren die Elemente $2x$ und $2x+2$ aus der Multiplikationstabelle entfernen, da die folgende Vereinfachung gilt (analog für $2x$):
+
+\begin{align*}
+	a \odot (2x + 2) &= a \odot (2\cdot (x+1)) \\
+	&= a \cdot (2 \cdot (x+1)) \mod h \\
+	&= (a \cdot (x+1)) \cdot 2 \mod h \\
+	&= (a \cdot (x+1)) \mod h \cdot 2\\
+	&= (a \odot (x+1)) \cdot 2\\
+\end{align*}
+
+Es muss also noch die folgende Multiplikationstabelle ausgefüllt werden (Die Tabelle ist natürlich symmetrisch zur Diagonalen).
+
+\begin{align*}
+	\begin{matrix}
+	\odot & x & x+1 & x+2 & 2x+1  \\
+	x & 2 & x+2 & 2x+2 & x+1   \\
+	x+1 & - & 2x & 1 & x   \\
+	x+2 & - & - & x & 2x   \\
+	2x+1 & - & - & - & x   \\
+	\end{matrix}
+\end{align*}
+\begin{align*}
+	(x \cdot x) \mod h 			&= x^2 \mod h 			&=&  2\\ 
+	(x \cdot (x+1)) \mod h 		&= x^2 + x \mod h 		&=& x+2\\
+	(x \cdot (x+2)) \mod h 		&= x^2 + 2x \mod h 		&=& 2x+2\\
+	(x \cdot (2x +1)) \mod h 	&= 2x^2 + x \mod h 		&=& x+1\\
+	((x+1)\cdot (x+1)) \mod h 	&= x^2 + 2x + 1 \mod h 	&=& 2x\\
+	((x+1)\cdot (x+2)) \mod h 	&= x^2 + 2 \mod h 		&=& 1\\
+	((x+1)\cdot (2x+1)) \mod h 	&= 2x^2 + x + 2 \mod h 	&=& x\\
+	((x+2)\cdot (x+2)) \mod h 	&= x^2 + x + 1 \mod h 	&=& x\\
+	((x+2)\cdot (2x+1)) \mod h 	&= 2x^2 + 2x + 2 \mod h 	&=& 2x\\
+	((2x+1)\cdot (2x+1)) \mod h 	&= x^2 + x + 1 \mod h 	&=& x\\
+\end{align*}
 #
 Bestimmen Sie ein Element, das die multiplikative Gruppe $K^{\ast}$ erzeugt.\medskip
 
-TODO
+Sei $\alpha = x+2$, dann gilt:
+\begin{align*}
+	\alpha^0 &= 1 \\
+	\alpha^1 &= x+2 \\
+	\alpha^2 &= x \\
+	\alpha^3 &= 2x+2 \\
+	\alpha^4 &= 2 \\
+	\alpha^5 &= 2x+1 \\
+	\alpha^6 &= 2x \\
+	\alpha^7 &= x+1 \\
+	(\alpha^8 &= 1) \\
+\end{align*}
+
+Und damit erzeugt $\alpha$ offensichtlich die multiplikative Gruppe $K^\ast = \Z_3[x]_2 \setminus \lbrace 0\rbrace$.
 \end{myList}
 \end{document}
