@@ -83,12 +83,41 @@ Sei $\C_1 \propto \C_2 \subseteq K^{2n}$ definiert durch:
 	\C_1 \propto \C_2 = \lbrace x = (c_1, c_1 + c_2) : c_1 \in \C_1, c_2 \in \C_2 \rbrace
 \end{equation*}
 Zeigen Sie, dass $\C_1 \propto \C_2$ ein linearer Code der Dimension $k_1 + k_2$ ist.\medskip
-
-TODO
+## $\C_1 \propto \C_2$ ist linear:\\
+### Da $\C_1$ und $\C_2$ linear sind, enthalten sie mindestens jeweils einen Vektor $c_1$ und $c_2$. Also enthält auch $\C_1 \propto \C_2$ mindestens einen Vektor: $(c_1, c_1+c_2)$.
+### Seien $x, y\in\C_1 \propto \C_2$ beliebig, d.h. $x=(x_1, x_1+x_2), y=(y_1, y_1+y_2)$ mit $x_1, y_1\in\C_1, x_2, y_2\in\C_2$. Sei $k\in K$ beliebig. Dann gilt:
+#### \begin{align*}
+x + y &= (x_1+y_1, x_1+x_2+y_1+y_2) = (x_1+y_1, x_1+y_1+x_2+y_2)\\
+x + y &\in \C_1 \propto \C_2 \iff x_1+y_1\in\C_1, x_2+y_2\in\C_2
+\intertext{Da $\C_1$ und $\C_2$ linear sind, gilt:}
+x+y &\in \C_1 \propto \C_2
+\end{align*}
+#### \begin{align*}
+k\cdot x &= (k x_1, k (x_1+x_2)) = (k x_1, k x_1+ k x_2)\\
+k\cdot x \in \C_1 \propto \C_2 \iff k x_1\in\C_1, k x_2\in\C_2
+\intertext{Da $\C_1$ und $\C_2$ linear sind, gilt:}
+k\cdot x \in \C_1 \propto \C_2
+\end{align*}
+Da gezeigt wurde, dass $\C_1 \propto \C_2$ nicht-leer und abgeschlossen bezüglich Vektoraddition und Skalarmultiplikation ist, ist $\C_1 \propto \C_2$ ein linearer Code.
+## $\dim(\C_1 \propto \C_2) = k_1+k_2$:\\
+Seien
+\begin{align*}
+\C'_1&=\set{(c, c) | c\in\C_1}~~\subseteq K^{2n}\\
+\C'_2&=\lbrace(\underbrace{0,\ldots, 0}_{n\text{ viele}}, c) | c\in\C_2\rbrace~~\subseteq K^{2n}
+\intertext{Da $|\C'_1|=|\C_1|, |\C'_2|=|\C_2|$, bleibt die Dimension der gestrichenen Mengen gleich:}
+\dim(\C'_1)&=\dim(\C_1)=k_1\\
+\dim(\C'_2)&=\dim(\C_1)=k_2\\
+\C'_1+\C'_2&=\C_1 \propto \C_2\\
+\C'_1\cap\C'_2&=\set{(c_1, c_2)|c_1=c_2\in\C_1, c_1=0, c_2\in\C_2}\\
+&=\set{(c_1, c_2)|c_1=c_2=0}=\set 0\\
+&\implies\dim(\C'_1\cap\C'_2)=0
+\intertext{Nach der Dimensionsformel gilt:}
+\dim(\C_1 \propto \C_2)&=\dim(\C'_1+\C'_2)=\dim(\C'_1)+\dim(\C'_2)-\dim(\C'_1\cap\C'_2)=k_1+k_2-0
+\end{align*}
 #
 Geben Sie ein Beispiel zweier zyklischer Codes $\C_1$ und $\C_2$ gleicher Länge an, sodass $C_1 \propto \C_2$ nicht zyklisch ist.\medskip
+Seien $n = 2,\C_1=\set{(00)}$ und sei $\C_2=\set{(00), (11)}$ der $n$-fache Wiederholungscode. $\C_1 \propto \C_2=\set{(0000), x=(0011)}$. $\sigma(x)=(1001)\not\in\C_1 \propto \C_2$. 
 
-TODO
 #
 Sei $m \in \N$ und $\mathcal{W}_{2^m}$ der $2^m$-fache binäre Wiederholungscode. Zeigen Sie, dass $RM(1,m) \propto \mathcal{W}_{2^m} = RM(1,m+1)$.\medskip
 
