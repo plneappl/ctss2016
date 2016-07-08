@@ -73,7 +73,7 @@ Vereinfache je zwei von den $w_i$, löse auf und berechne die Polynome:
 	&= x_0x_1x_2 + x_0x_3 + x_0 + 1 = l_2
 \end{align*}
 
-Berechne schließlich das Produkt von $l_1$ und $l_2$:
+Berechne schließlich das Produkt von $l_1$ und $l_2$ und erhalte die Lösung:
 \begin{align*}
 	l_1l_2 = x_0 + x_1x_2 + x_3 + 1
 \end{align*}
@@ -133,7 +133,7 @@ Sei $m \in \N$. Zeigen Sie:
 
 Zeige zunächst per Induktionsbeweis über $m$ dass $RM(m-1,m) \subseteq \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace$:
 \begin{itemize}
-	\item[IA:] Die einzigen Polynome von Grad $\leq 0$ in $RM(0,1)$ sind 0 und 1, und für 0 und 1 gilt die Aussage offensichtlich.
+	\item[IA:] Die einzigen Polynome von Grad $\leq 0$ in $RM(0,1)$ sind 0 und 1, und für die von 0 und 1 erzeugten Vektoren gilt die Aussage offensichtlich.
 	\item[IH:] Sei $c = \underline{f} \in RM(n-1,n)$, dann $wt(c)$ ist gerade.
 	\item[IS:] Sei $c = \underline{f} \in RM(n,n+1)$, zeige $wt(c)$ ist gerade.\\
 	$f$ kann auf folgende Weise dargestellt werden:\\
@@ -151,21 +151,26 @@ Zeige zunächst per Induktionsbeweis über $m$ dass $RM(m-1,m) \subseteq \lbrace
 	\hline
 	\end{tabular}
 	
-	$\underline{f}$ hat also die Form $(\underline{g}, \underline{g+h})$(falls $x_{n+1}$ Most significant Bit in der Anordnung der Vektoren aus $\Z_2^{n+1}$ ist, ansonsten entsprechend permutiert).\medskip
+	$\underline{f}$ hat also die Form $(\underline{g}, \underline{g+h})$.
+	(Jedenfalls sofern $x_{n+1}$ das most significant Bit in der Anordnung der Vektoren aus $\Z_2^{n+1}$ ist, ansonsten sind einfach die Spalten in der Tabelle permutiert).\medskip
 	
 	$h(x_0,\ldots,x_n)$ muss einen Grad $\leq n-1$ haben, und hat damit nach IH ein gerades Gewicht.\medskip
 	
 	Unterscheide jetzt die beiden Fälle dass $wt(\underline{g})$ gerade oder ungerade ist.
 	Ist $wt(\underline{g})$ gerade, so ist auch $wt(\underline{g+h})$ gerade, und damit auch $wt(\underline{f})$ gerade.
 	Ist $wt(\underline{g})$ ungerade, so ist auch $wt(\underline{g+h})$ ungerade, und damit aber $wt(\underline{f})$ gerade.
-	(Die Implikationen ergeben sich aus der Tatsache dass $wt(\underline{g + h}) = wt(\underline{g}) + wt(\underline{h}) - 2 \cdot i$ wobei $i$ die Anzahl der Stellen ist an denen beide Vektoren $1$ sind.
+	(Die Implikationen ergeben sich aus der Tatsache dass $wt(\underline{g + h}) = wt(\underline{g}) + wt(\underline{h}) - 2 \cdot i$ wobei $i$ die Anzahl der Stellen ist an denen beide Vektoren $1$ sind.)
 \end{itemize}
 
-Zeige nun $\lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace \subseteq RM(m-1,m)$:
-
-$M = \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade }\rbrace$ ist ein $m-1$ dimensionaler Unterraum des $\Z_2^{2^m}$.
-(Abschlusseigenschaften sind offensichtlich, Dimension ergibt sich aus der Kardinalität).
-Damit gilt nach Satz 4.15: $\chi_M \in RM(r,m)$.
+Zeige nun $M = \lbrace z \in \Z^{2^m}_2 : wt(z) \text{ ist gerade } \rbrace = RM(m-1,m)$:\\
+Es gilt $|M| = \frac{2^{2^m}}{2} = 2^{2^m -1}$ da die Anzahl der Vektoren mit geradem Gewicht gerade die Hälfte aller Vektoren ist.\\
+Desweiteren gilt $|RM(m-1,m)| = 2^{dim(RM(m-1,m))} = 2^{2^m -1}$ nach Satz 4.11:
+\begin{align*}
+	dim(RM(m-1,m)) &= \sum\limits_{i= 0}^{m-1} \binom{m}{i}  \\
+	&= \left( \sum\limits_{i= 0}^{m} \binom{m}{i} \right) - \binom{m}{m-1} \\
+	&= 2^m - 2 = 2^{m-1} 
+\end{align*}
+Da wir schon gezeigt haben dass $RM(m-1,m) \subseteq M$ muss also gelten $M = RM(m-1,m)$.
 
 
 \section*{Aufgabe 25}
